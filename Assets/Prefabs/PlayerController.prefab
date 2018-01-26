@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 4267972639845056}
   - component: {fileID: 33427707311491406}
   - component: {fileID: 23462446189420296}
+  - component: {fileID: 114687837318289308}
   m_Layer: 0
   m_Name: PlayerModel
   m_TagString: Player
@@ -164,6 +165,7 @@ GameObject:
   - component: {fileID: 54904731321810888}
   - component: {fileID: 114148661707543346}
   - component: {fileID: 114301487994013110}
+  - component: {fileID: 114051399708662926}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Player
@@ -865,7 +867,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!65 &65101755326747096
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -928,6 +930,25 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1668368568175280}
   m_Enabled: 1
+--- !u!114 &114051399708662926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1634509590536468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1267208747, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 4267972639845056}
+  m_ChildIndex: 0
+  m_SendInterval: 0.033333335
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_MovementThreshold: 0.001
+  m_InterpolateRotation: 0.5
+  m_InterpolateMovement: 0.5
 --- !u!114 &114148661707543346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -972,15 +993,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 1
-  m_SendInterval: 0.1
+  m_SendInterval: 0.033333335
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
-  m_SyncSpin: 0
+  m_SyncSpin: 1
   m_MovementTheshold: 0.001
   m_VelocityThreshold: 0.0001
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &114687837318289308
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1186448824185706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 179
+    i1: 236
+    i2: 248
+    i3: 77
+    i4: 185
+    i5: 9
+    i6: 76
+    i7: 228
+    i8: 235
+    i9: 47
+    i10: 153
+    i11: 243
+    i12: 108
+    i13: 152
+    i14: 22
+    i15: 42
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114716531105264278
 MonoBehaviour:
   m_ObjectHideFlags: 1
