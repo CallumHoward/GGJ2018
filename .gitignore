@@ -203,3 +203,5 @@ xcuserdata/
 .csettings
 
 
+# ===== Local ===== #
+ProjectSettings/ProjectVersion.txt
