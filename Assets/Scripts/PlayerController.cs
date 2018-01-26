@@ -20,7 +20,6 @@ public class Variables
     public Rigidbody player;
     [Header("MovementReliant")]
     [Tooltip("Model to rotate when moving")]
-    [SyncVar]
     public GameObject childModel;
     [Tooltip("Rotation reference independant of camera position")]
     public GameObject rotationReference;
@@ -62,8 +61,7 @@ public class PlayerController : NetworkBehaviour
         UnityEditor.EditorWindow window = EditorWindow.GetWindow(typeof(PlayerController));
         window.Show();
     }
-
-    [SyncVar]
+    
     public Variables Variables = new Variables();
     public PlayerAnimations PlayerAnimations = new PlayerAnimations();
     private NetworkIdentity objNetId;
@@ -77,19 +75,12 @@ public class PlayerController : NetworkBehaviour
         {
             return;
         }
-        CmdColour();
         GameObject newCamera = Instantiate(Variables.cameraPrefab, Variables.cameraPosition.transform.position, Variables.cameraPosition.transform.rotation);
         newCamera.transform.parent = gameObject.transform;
         //Variables.anim = GetComponent<Animation>();
         Variables.player = gameObject.GetComponent<Rigidbody>();
         Variables.colliderPos = GetComponent<CapsuleCollider>().center.y;
         Variables.colliderHeight = GetComponent<CapsuleCollider>().height;
-    }
-    [Command]
-    void CmdColour()
-    {
-        RpcColour();                                    // usse a Client RPC function to "paint" the object on all clients
-        
     }
 
 

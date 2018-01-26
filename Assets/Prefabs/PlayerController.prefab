@@ -69,7 +69,6 @@ GameObject:
   - component: {fileID: 4267972639845056}
   - component: {fileID: 33427707311491406}
   - component: {fileID: 23462446189420296}
-  - component: {fileID: 114746159472081696}
   m_Layer: 0
   m_Name: PlayerModel
   m_TagString: Player
@@ -959,7 +958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f96f4205875ca794b90789dc0e23c0b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _PLAYER: 2
+  _PLAYER: 3
   Variables:
     player: {fileID: 0}
     childModel: {fileID: 1186448824185706}
@@ -976,38 +975,6 @@ MonoBehaviour:
     colliderHeight: 0
     jumpAllowed: 1
     grounded: 1
---- !u!114 &114746159472081696
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1186448824185706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 179
-    i1: 236
-    i2: 248
-    i3: 77
-    i4: 185
-    i5: 9
-    i6: 76
-    i7: 228
-    i8: 235
-    i9: 47
-    i10: 153
-    i11: 243
-    i12: 108
-    i13: 152
-    i14: 22
-    i15: 42
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!136 &136188986737155858
 CapsuleCollider:
   m_ObjectHideFlags: 1
