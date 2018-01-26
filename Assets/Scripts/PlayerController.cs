@@ -71,6 +71,10 @@ public class PlayerController : NetworkBehaviour
     // Use this for initialization
     void Start()
     {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
         GameObject newCamera = Instantiate(Variables.cameraPrefab, Variables.cameraPosition.transform.position, Variables.cameraPosition.transform.rotation);
         newCamera.transform.parent = gameObject.transform;
         //Variables.anim = GetComponent<Animation>();
