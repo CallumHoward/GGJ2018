@@ -60,6 +60,8 @@ GameObject:
   - component: {fileID: 195248685967860802}
   - component: {fileID: 54171272183635238}
   - component: {fileID: 65399193838028478}
+  - component: {fileID: 114881257917634794}
+  - component: {fileID: 114973318993314016}
   m_Layer: 2
   m_Name: Raptor
   m_TagString: Untagged
@@ -159,7 +161,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1458228945720182}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 258.58002, y: 0.39999974, z: 259.25}
+  m_LocalPosition: {x: 233.58002, y: 0.39999974, z: 243.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4310005579185822}
@@ -549,8 +551,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e6d145941504359a6cb4b9b63b24d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   isChasing: 1
   dinoBehaviour: {fileID: 114379491778410616}
+--- !u!114 &114881257917634794
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1458228945720182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.033333335
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &114973318993314016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1458228945720182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 2
+    i1: 45
+    i2: 170
+    i3: 85
+    i4: 130
+    i5: 235
+    i6: 167
+    i7: 212
+    i8: 218
+    i9: 78
+    i10: 80
+    i11: 15
+    i12: 145
+    i13: 63
+    i14: 238
+    i15: 76
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!136 &136669836037667302
 CapsuleCollider:
   m_ObjectHideFlags: 1
