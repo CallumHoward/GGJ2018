@@ -21,15 +21,15 @@ public class DinoBehaviour : MonoBehaviour {
     
     // Update is called once per frame
     void Update () {
-        if (goal == null)
-        {
-            goal = GameObject.Find("PlayerController(Clone)");
-        }
-        if (!isCorralled && playerRaycastCheck.isChasing && Vector3.Distance(transform.position, goal.transform.position) < viewDistance) {
-            agent.destination = goal.transform.position;
-        } else {
-            agent.destination = transform.position;
-        }
+		if (goal == null) {
+			goal = GameObject.Find ("PlayerController(Clone)");
+		} else {
+			if (!isCorralled && playerRaycastCheck.isChasing && Vector3.Distance (transform.position, goal.transform.position) < viewDistance) {
+				agent.destination = goal.transform.position;
+			} else {
+				agent.destination = transform.position;
+			}
+		}
     }
 
     void OnTriggerStay(Collider c) {
