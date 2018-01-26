@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 
 public enum PLAYER
 {
@@ -49,7 +50,7 @@ public class PlayerAnimations
 
 }
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     public PLAYER _PLAYER;
     [MenuItem("Examples/Editor GUILayout Enum Popup usage")]
@@ -69,7 +70,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         
-        Cursor.visible = false;
+        Cursor.visible = true;
         //Variables.anim = GetComponent<Animation>();
         Variables.player = gameObject.GetComponent<Rigidbody>();
         Variables.colliderPos = GetComponent<CapsuleCollider>().center.y;
@@ -81,6 +82,10 @@ public class PlayerController : MonoBehaviour
     {
         float colliderHeightTemp = Variables.colliderHeight / 2f;
 
+        if (!isLocalPlayer)
+        {
+            return;
+        }
         if (Input.GetAxis("Crouch_" + _PLAYER.ToString()) == 1)
         {
             Variables.forwardSpeed = 3f;
