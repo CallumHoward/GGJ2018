@@ -7,6 +7,8 @@ public class DinoBehaviour : MonoBehaviour {
 
     public bool isCorralled = false;
     public GameObject goal;
+    [Range(0f, 100f)]
+    public float viewDistance = 40f;
     NavMeshAgent agent;
 
     public PlayerRaycastCheck playerRaycastCheck;
@@ -19,7 +21,7 @@ public class DinoBehaviour : MonoBehaviour {
     
     // Update is called once per frame
     void Update () {
-        if (!isCorralled && playerRaycastCheck.isChasing) {
+        if (!isCorralled && playerRaycastCheck.isChasing && Vector3.Distance(transform.position, goal.transform.position) < viewDistance) {
             agent.destination = goal.transform.position;
         } else {
             agent.destination = transform.position;

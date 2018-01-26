@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Main : MonoBehaviour {
 
+    public Menu menu;
+
     private ButtonAttributes[] buttons = new ButtonAttributes[] {
-            //new ButtonAttributes("BUTTON LABEL", delegate { Menu.LoadScene("SceneName"); }),
-            new ButtonAttributes("QUIT", delegate { Menu.QuitScene(); }),
+            new ButtonAttributes("MULTIPLAYER", delegate { menu.ShowPanel(0); }),
+            new ButtonAttributes("QUIT", delegate { menu.QuitScene(); }),
         };
 
     // Use this for initialization
     void Start() {
-        Menu.ShowMenu("Menu", buttons, GameObject.Find("MenuCanvas").transform);
+        menu.ShowMenu("Menu", buttons, GameObject.Find("MenuCanvas").transform);
     }
 
     // Update is called once per frame

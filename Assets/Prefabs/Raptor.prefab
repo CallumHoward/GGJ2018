@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4272018839677768}
   - component: {fileID: 114438743437187638}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: HeadRotator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 33333606791485256}
   - component: {fileID: 136669836037667302}
   - component: {fileID: 23205129466422388}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 195248685967860802}
   - component: {fileID: 54171272183635238}
   - component: {fileID: 65399193838028478}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: Raptor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 33476725456067802}
   - component: {fileID: 136791696053147850}
   - component: {fileID: 23742045646400904}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 33858596437797670}
   - component: {fileID: 136676612198902584}
   - component: {fileID: 23382103549260832}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 33812863897043090}
   - component: {fileID: 136697612964856766}
   - component: {fileID: 23347813877992206}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: Tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,13 +141,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1021293079302126}
-  m_LocalRotation: {x: -0.6955061, y: -0, z: -0, w: 0.7185203}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 1.4609377, z: -1.0988059}
   m_LocalScale: {x: 0.38132805, y: 0.40448743, z: 0.4044874}
   m_Children: []
   m_Father: {fileID: 4310005579185822}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!4 &4310005579185822
 Transform:
   m_ObjectHideFlags: 1
@@ -461,6 +461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCorralled: 0
   goal: {fileID: 0}
+  viewDistance: 40
   playerRaycastCheck: {fileID: 114438743437187638}
 --- !u!114 &114438743437187638
 MonoBehaviour:
@@ -474,6 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChasing: 0
+  dinoBehaviour: {fileID: 114379491778410616}
 --- !u!136 &136669836037667302
 CapsuleCollider:
   m_ObjectHideFlags: 1

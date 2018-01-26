@@ -20,7 +20,9 @@ public class ButtonAttributes
 
 public class Menu : MonoBehaviour {
 
-    static public void ShowMenu(string titleText, ButtonAttributes[] buttonAttributes, Transform transform) {
+    public GameObject[] panels;
+
+    public void ShowMenu(string titleText, ButtonAttributes[] buttonAttributes, Transform transform) {
         var prefab = Resources.Load("Prefabs/Menu");
         GameObject menu = (GameObject)Instantiate(prefab, transform);
         menu.GetComponent<Menu>().Init(buttonAttributes);
@@ -39,11 +41,11 @@ public class Menu : MonoBehaviour {
 
     }
 
-    static public void LoadScene(string name) {
+    public void LoadScene(string name) {
         SceneManager.LoadScene(name, LoadSceneMode.Single);
     }
 
-    static public void QuitScene() {
+    public void QuitScene() {
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -51,6 +53,11 @@ public class Menu : MonoBehaviour {
         Application.Quit();
 #endif
 
+    }
+
+    public void ShowPanel(int panelIndex) {
+        panels[panelIndex].SetActive(true);
+        this.SetActive(false);
     }
 
     // Update is called once per frame
