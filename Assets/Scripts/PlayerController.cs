@@ -20,6 +20,7 @@ public class Variables
     public Rigidbody player;
     [Header("MovementReliant")]
     [Tooltip("Model to rotate when moving")]
+    [SyncVar]
     public GameObject childModel;
     [Tooltip("Rotation reference independant of camera position")]
     public GameObject rotationReference;
@@ -62,6 +63,7 @@ public class PlayerController : NetworkBehaviour
         window.Show();
     }
 
+    [SyncVar]
     public Variables Variables = new Variables();
     public PlayerAnimations PlayerAnimations = new PlayerAnimations();
     private NetworkIdentity objNetId;
@@ -86,10 +88,7 @@ public class PlayerController : NetworkBehaviour
     [Command]
     void CmdColour()
     {
-        objNetId = Variables.childModel.GetComponent<NetworkIdentity>();        // get the object's network ID
-        objNetId.AssignClientAuthority(connectionToClient);    // assign authority to the player who is changing the color
         RpcColour();                                    // usse a Client RPC function to "paint" the object on all clients
-        objNetId.RemoveClientAuthority(connectionToClient);
         
     }
 
