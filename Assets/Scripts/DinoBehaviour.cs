@@ -32,9 +32,10 @@ public class DinoBehaviour : MonoBehaviour {
 		}
     }
 
-    void OnTriggerStay(Collider c) {
+    void OnTriggerEnter(Collider c) {
         if (c.tag == "Pen") {
             isCorralled = true;
+			c.GetComponent<DinoPen> ().DinoEnter (this);
         }
     }
 }

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33683803234769882}
   - component: {fileID: 23597468574878338}
   - component: {fileID: 65990979710638358}
+  - component: {fileID: 114191406600571102}
   m_Layer: 2
   m_Name: DinoPen
   m_TagString: Pen
@@ -93,3 +94,14 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.2572827, y: 2, z: 5.3420124}
   m_Center: {x: 0, y: 1.110223e-16, z: 0}
+--- !u!114 &114191406600571102
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1674901005614872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c9b77cab377bc647ae0cb420fec57d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

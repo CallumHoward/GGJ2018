@@ -14,9 +14,7 @@ public class DinoPen : MonoBehaviour {
 		
 	}
 
-	void OnTriggerEnter(Collider c) {
-		if (c.tag == "Raptor") {
-			Debug.Log ("Got a raptor");
-		}
+	public void DinoEnter(DinoBehaviour d) {
+		Debug.Log ("Got a dino");
 	}
 }
