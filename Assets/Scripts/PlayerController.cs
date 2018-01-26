@@ -23,6 +23,8 @@ public class Variables
     public GameObject childModel;
     [Tooltip("Rotation reference independant of camera position")]
     public GameObject rotationReference;
+    public GameObject cameraPosition;
+    public GameObject cameraPrefab;
     public Vector3 currentRotation;
 
     [Header("Movement")]
@@ -69,8 +71,8 @@ public class PlayerController : NetworkBehaviour
     // Use this for initialization
     void Start()
     {
-        
-        Cursor.visible = true;
+        GameObject newCamera = Instantiate(Variables.cameraPrefab, Variables.cameraPosition.transform.position, Variables.cameraPosition.transform.rotation);
+        newCamera.transform.parent = gameObject.transform;
         //Variables.anim = GetComponent<Animation>();
         Variables.player = gameObject.GetComponent<Rigidbody>();
         Variables.colliderPos = GetComponent<CapsuleCollider>().center.y;
