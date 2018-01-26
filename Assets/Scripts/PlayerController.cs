@@ -75,7 +75,6 @@ public class PlayerController : MonoBehaviour
         Variables.colliderPos = GetComponent<CapsuleCollider>().center.y;
         Variables.colliderHeight = GetComponent<CapsuleCollider>().height;
     }
-<<<<<<< HEAD
 
     // Update is called once per frame
     void FixedUpdate()
@@ -181,14 +180,4 @@ public class PlayerController : MonoBehaviour
     {
         Variables.grounded = false;
     }
-=======
-	
-	// Update is called once per frame
-	void Update () {
-		Vector3 Direction = new Vector3 (Input.GetAxisRaw ("Horizontal"), 0f, Input.GetAxisRaw ("Vertical"));
-		Direction = Camera.main.transform.TransformDirection (Direction);
-		Direction.y = 0f;
-		gameObject.transform.position = (transform.position + Direction * Time.deltaTime);
-	}
->>>>>>> 8f82d4b74e28e66b12ab4d616566881371c77746
 }
