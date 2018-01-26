@@ -16,11 +16,15 @@ public class DinoBehaviour : MonoBehaviour {
     // Use this for initialization
     void Start () {
         agent = GetComponent<NavMeshAgent>();
-        goal = GameObject.Find("PlayerController");
+        
     }
     
     // Update is called once per frame
     void Update () {
+        if (goal == null)
+        {
+            goal = GameObject.Find("PlayerController(Clone)");
+        }
         if (!isCorralled && playerRaycastCheck.isChasing && Vector3.Distance(transform.position, goal.transform.position) < viewDistance) {
             agent.destination = goal.transform.position;
         } else {

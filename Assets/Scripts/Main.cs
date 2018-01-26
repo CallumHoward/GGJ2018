@@ -7,8 +7,8 @@ public class Main : MonoBehaviour {
     public Menu menu;
 
     private ButtonAttributes[] buttons = new ButtonAttributes[] {
-            new ButtonAttributes("MULTIPLAYER", delegate { menu.ShowPanel(0); }),
-            new ButtonAttributes("QUIT", delegate { menu.QuitScene(); }),
+            //new ButtonAttributes("MULTIPLAYER", delegate { menu.ShowPanel(0); }),
+            //new ButtonAttributes("QUIT", delegate { menu.QuitScene(); }),
         };
 
     // Use this for initialization

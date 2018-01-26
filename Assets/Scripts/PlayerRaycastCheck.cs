@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class PlayerRaycastCheck : MonoBehaviour {
 
-	GameObject player;
+	public GameObject player;
 	public bool isChasing = false;
 
 	public DinoBehaviour dinoBehaviour;
 
-	// Use this for initialization
-	void Start () {
-		player = GameObject.Find("PlayerController");
-	}
-
 	void Update() {
-		gameObject.transform.LookAt(player.transform);
-		Mathf.Clamp(transform.rotation.x, -135, -45);
-	}
+        if (player != null)
+        {
+            gameObject.transform.LookAt(player.transform);
+        }
+        else
+        {
+            player = GameObject.Find("PlayerController(Clone)");
+        }
+        
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () {

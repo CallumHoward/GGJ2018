@@ -57,7 +57,7 @@ public class Menu : MonoBehaviour {
 
     public void ShowPanel(int panelIndex) {
         panels[panelIndex].SetActive(true);
-        this.SetActive(false);
+        //this.SetActive(false);
     }
 
     // Update is called once per frame
