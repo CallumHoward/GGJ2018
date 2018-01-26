@@ -958,7 +958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f96f4205875ca794b90789dc0e23c0b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _PLAYER: 0
+  _PLAYER: 2
   Variables:
     player: {fileID: 0}
     childModel: {fileID: 1186448824185706}

@@ -75,6 +75,7 @@ public class PlayerController : NetworkBehaviour
         {
             return;
         }
+        CmdColour();
         GameObject newCamera = Instantiate(Variables.cameraPrefab, Variables.cameraPosition.transform.position, Variables.cameraPosition.transform.rotation);
         newCamera.transform.parent = gameObject.transform;
         //Variables.anim = GetComponent<Animation>();
@@ -82,7 +83,32 @@ public class PlayerController : NetworkBehaviour
         Variables.colliderPos = GetComponent<CapsuleCollider>().center.y;
         Variables.colliderHeight = GetComponent<CapsuleCollider>().height;
     }
+    [Command]
+    void CmdColour()
+    {
+        RpcColour();
+    }
 
+
+    [ClientRpc]
+    void RpcColour ()
+    {
+        switch (_PLAYER)
+        {
+            case PLAYER.Player_1:
+                Variables.childModel.GetComponent<Renderer>().material.color = Color.red;
+                break;
+            case PLAYER.Player_2:
+                Variables.childModel.GetComponent<Renderer>().material.color = Color.blue;
+                break;
+            case PLAYER.Player_3:
+                Variables.childModel.GetComponent<Renderer>().material.color = Color.green;
+                break;
+            case PLAYER.Player_4:
+                Variables.childModel.GetComponent<Renderer>().material.color = Color.yellow;
+                break;
+        }
+    }
     // Update is called once per frame
     void FixedUpdate()
     {

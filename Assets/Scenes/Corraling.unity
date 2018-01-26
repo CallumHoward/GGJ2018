@@ -538,6 +538,16 @@ Prefab:
       propertyPath: m_Name
       value: Raptor (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 114973318993314016, guid: 022daa5582eba7d4da4e500f913fee4c,
+        type: 2}
+      propertyPath: m_LocalPlayerAuthority
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114973318993314016, guid: 022daa5582eba7d4da4e500f913fee4c,
+        type: 2}
+      propertyPath: m_ServerOnly
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 022daa5582eba7d4da4e500f913fee4c, type: 2}
   m_IsPrefabParent: 0
