@@ -64,8 +64,8 @@ public class PlayerController : NetworkBehaviour
 
     public Variables Variables = new Variables();
     public PlayerAnimations PlayerAnimations = new PlayerAnimations();
+    private NetworkIdentity objNetId;
 
-    
 
 
     // Use this for initialization
@@ -86,7 +86,11 @@ public class PlayerController : NetworkBehaviour
     [Command]
     void CmdColour()
     {
-        RpcColour();
+        objNetId = Variables.childModel.GetComponent<NetworkIdentity>();        // get the object's network ID
+        objNetId.AssignClientAuthority(connectionToClient);    // assign authority to the player who is changing the color
+        RpcColour();                                    // usse a Client RPC function to "paint" the object on all clients
+        objNetId.RemoveClientAuthority(connectionToClient);
+        
     }
 
 
