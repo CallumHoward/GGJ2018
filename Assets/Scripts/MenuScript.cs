@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class MenuScript : MonoBehaviour {
     
-    public void MenuShow(int menuIndex)
-    {
-
-    }
-
     public void Quit()
     {
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
         Application.Quit();
+#endif
+
     }
 }
