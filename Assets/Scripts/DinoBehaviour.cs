@@ -5,16 +5,20 @@ using UnityEngine.AI;
 
 public class DinoBehaviour : MonoBehaviour {
 
-	public enum State { Idle, Chase, Hypnotised, Corralled };
+	public enum State { Idle, Spotted, Chase, Hypnotised, Corralled };
 	public State state = State.Idle;
 	float stateCounter;
-	float hypnosisCounter;
 	GameObject pen;
     public GameObject goal;
     [Range(0f, 100f)]
     public float viewDistance = 40f;
     NavMeshAgent agent;
+	public float ANGULAR_SPEED;
+	public float SPOTTED_DURATION;
+	public float CHASE_WITHOUT_SEEING_COUNTER;
 	public float CHASE_SPEED;
+	public float SPOTTED_SPEED;
+	public float SPOTTED_ANGULAR_SPEED;
 	public float CORRALLED_SPEED;
 	public float IDLE_SPEED;
 	public float IDLE_WANDER_RADIUS;
@@ -26,8 +30,8 @@ public class DinoBehaviour : MonoBehaviour {
     // Use this for initialization
     void Start () {
         agent = GetComponent<NavMeshAgent>();
+		agent.angularSpeed = ANGULAR_SPEED;
 		stateCounter = 0;
-		hypnosisCounter = 0;
     }
     
     // Update is called once per frame
@@ -35,9 +39,13 @@ public class DinoBehaviour : MonoBehaviour {
 		if (goal == null) {
 			goal = GameObject.Find ("PlayerController(Clone)");
 		}
+		agent.angularSpeed = ANGULAR_SPEED;
 		switch (state) {
 		case State.Idle:
 			Idle ();
+			break;
+		case State.Spotted:
+			Spotted ();
 			break;
 		case State.Chase:
 			Chase ();
@@ -53,7 +61,7 @@ public class DinoBehaviour : MonoBehaviour {
 
 	void Idle() {
 		if (CanChaseGoal()) {
-			OnChase ();
+			OnSpotted ();
 		} else {
 			// Wander to a random position around the dino
 			stateCounter -= Time.deltaTime;
@@ -69,12 +77,31 @@ public class DinoBehaviour : MonoBehaviour {
 	void OnIdle() {
 		state = State.Idle;
 		agent.speed = IDLE_SPEED;
-		agent.destination = transform.position;
 		stateCounter = 0;
 	}
 
+	void Spotted() {
+		if (goal == null) {
+			OnIdle ();
+			return;
+		}
+		agent.angularSpeed = SPOTTED_ANGULAR_SPEED;
+		stateCounter -= Time.deltaTime;
+		if (stateCounter <= 0) {
+			OnChase ();
+		}
+	}
+
+	void OnSpotted() {
+		agent.destination = goal.transform.position;
+		agent.speed = SPOTTED_SPEED;
+		state = State.Spotted;
+		Debug.Log ("Spotted!");
+	}
+
 	void Chase() {
-		if (CanChaseGoal()) {
+		stateCounter -= Time.deltaTime;
+		if (goal != null && (stateCounter > 0 || CanChaseGoal())) {
 			agent.destination = goal.transform.position;
 		} else {
 			OnIdle ();
@@ -85,13 +112,14 @@ public class DinoBehaviour : MonoBehaviour {
 		agent.destination = goal.transform.position;
 		state = State.Chase;
 		agent.speed = CHASE_SPEED;
+		stateCounter = CHASE_WITHOUT_SEEING_COUNTER;
 	}
 
 	void Hypnotised() {
-		if (hypnosisCounter <= 0) {
+		if (stateCounter <= 0) {
 			OnIdle ();
 		} else {
-			hypnosisCounter -= Time.deltaTime;
+			stateCounter -= Time.deltaTime;
 			agent.destination = goal.transform.position;
 		}
 	}
@@ -100,7 +128,7 @@ public class DinoBehaviour : MonoBehaviour {
 		goal = hypnotiser;
 		agent.speed = HYPNOTISED_SPEED;
 		state = State.Hypnotised;
-		hypnosisCounter = HYPNOSIS_DURATION;
+		stateCounter = HYPNOSIS_DURATION;
 	}
 
 	void Corralled() {
