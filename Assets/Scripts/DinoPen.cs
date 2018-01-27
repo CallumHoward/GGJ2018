@@ -48,7 +48,7 @@ public class DinoPen : MonoBehaviour {
 		GameObject obj = Instantiate (
 			parent, transform.position + midPosition, Quaternion.AngleAxis (yAngle, Vector3.up));
 		if (parent.GetComponent<Renderer> () == null) {
-			// TODO: gate placement
+			// TODO: gate scale
 			return;
 		}
 		Bounds bounds = parent.GetComponent<Renderer> ().bounds;
@@ -64,6 +64,7 @@ public class DinoPen : MonoBehaviour {
 		Vector3 size = Vector3.Scale(transform.localScale, bounds.size);
 		int numSectionsX = Mathf.Max((int)(size.x / FENCE_SECTION_LENGTH_MAX), 1);
 		float sectionLengthX = size.x / numSectionsX;
+		float y = FencePole.GetComponent<Renderer> ().bounds.size.y * 0.5f;
 		int numSectionsZ = Mathf.Max((int)(size.z / FENCE_SECTION_LENGTH_MAX), 1);
 		float sectionLengthZ = size.z / numSectionsZ;
 		List<Vector3> positions = new List<Vector3> ();
@@ -72,25 +73,25 @@ public class DinoPen : MonoBehaviour {
 		for (int i = 0; i < numSectionsX; i++) {
 			float dx = -size.x * 0.5f + sectionLengthX * i;
 			Vector2 offset = Random.insideUnitCircle * positionRandomOffsetFactor * sectionLengthX;
-			positions.Add (new Vector3 (dx, 0, -size.z * 0.5f) + new Vector3(offset.x, 0, offset.y));
+			positions.Add (new Vector3 (dx, y, -size.z * 0.5f) + new Vector3(offset.x, 0, offset.y));
 		}
 		// Right
 		for (int i = 0; i < numSectionsZ; i++) {
 			float dz = -size.z * 0.5f + sectionLengthZ * i;
 			Vector2 offset = Random.insideUnitCircle * positionRandomOffsetFactor * sectionLengthZ;
-			positions.Add (new Vector3 (size.x * 0.5f, 0, dz) + new Vector3(offset.x, 0, offset.y));
+			positions.Add (new Vector3 (size.x * 0.5f, y, dz) + new Vector3(offset.x, 0, offset.y));
 		}
 		// Bottom
 		for (int i = 0; i < numSectionsX; i++) {
 			float dx = size.x * 0.5f - sectionLengthX * i;
 			Vector2 offset = Random.insideUnitCircle * positionRandomOffsetFactor * sectionLengthX;
-			positions.Add (new Vector3 (dx, 0, size.z * 0.5f) + new Vector3(offset.x, 0, offset.y));
+			positions.Add (new Vector3 (dx, y, size.z * 0.5f) + new Vector3(offset.x, 0, offset.y));
 		}
 		// Left
 		for (int i = 0; i < numSectionsZ; i++) {
 			float dz = size.z * 0.5f - sectionLengthZ * i;
 			Vector2 offset = Random.insideUnitCircle * positionRandomOffsetFactor * sectionLengthZ;
-			positions.Add (new Vector3 (-size.x * 0.5f, 0, dz) + new Vector3(offset.x, 0, offset.y));
+			positions.Add (new Vector3 (-size.x * 0.5f, y, dz) + new Vector3(offset.x, 0, offset.y));
 		}
 		return positions;
 	}
