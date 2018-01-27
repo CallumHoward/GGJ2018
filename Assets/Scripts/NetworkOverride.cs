@@ -7,8 +7,8 @@ using UnityEngine.Networking;
 
 public class NetworkOverride : NetworkManager {
 
-    [SyncVar]
-    public int playerCount;
+    
+    public static int playerCount;
     public static UnityEvent OnNewPlayer;
 
     private void Start()

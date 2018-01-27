@@ -65,9 +65,7 @@ public class PlayerController : NetworkBehaviour
 
     public Variables Variables = new Variables();
     public PlayerAnimations PlayerAnimations = new PlayerAnimations();
-
-    [SyncVar]
-    public int playerCount;
+    
 
     // Use this for initialization
     void Start()
@@ -129,8 +127,8 @@ public class PlayerController : NetworkBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        print(playerCount - 1);
-        for (int i = 0; i < playerCount - 1; i++)
+        print(NetworkOverride.playerCount - 1);
+        for (int i = 0; i < NetworkOverride.playerCount - 1; i++)
         {
             NetworkServer.connections[i].playerControllers[0].gameObject.GetComponent<PlayerController>()._PLAYER = (PLAYER)i;
             NetworkServer.connections[i].playerControllers[0].gameObject.GetComponentInChildren<Renderer>().material.color = Test(NetworkServer.connections[i].playerControllers[0].gameObject.GetComponent<PlayerController>()._PLAYER);
