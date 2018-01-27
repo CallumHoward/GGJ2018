@@ -22,15 +22,17 @@ public class DinoPen : MonoBehaviour {
 			Vector3 position = polePositions [i];
 			Instantiate(FencePole, transform.position + position, Quaternion.identity);
 
-			Vector3 positionNext = polePositions [(i + 1) % polePositions.Count];
-			Vector3 railPosition = Vector3.Lerp (position, positionNext, 0.5f);
-			float yAngle = Vector3.SignedAngle (Vector3.forward, positionNext - position, Vector3.up);
-			GameObject rail = Instantiate(
-				FenceRail, transform.position + railPosition, Quaternion.AngleAxis(yAngle, Vector3.up));
-			float length = FenceRail.GetComponent<Renderer> ().bounds.size.z;
-			Vector3 scale = FenceRail.transform.localScale;
-			scale.z = Vector3.Distance (position, positionNext) * scale.z / length;
-			rail.transform.localScale = scale;
+			if (Random.value < 0.8f) {
+				Vector3 positionNext = polePositions [(i + 1) % polePositions.Count];
+				Vector3 railPosition = Vector3.Lerp (position, positionNext, 0.5f);
+				float yAngle = Vector3.SignedAngle (Vector3.forward, positionNext - position, Vector3.up);
+				GameObject rail = Instantiate (
+					                  FenceRail, transform.position + railPosition, Quaternion.AngleAxis (yAngle, Vector3.up));
+				float length = FenceRail.GetComponent<Renderer> ().bounds.size.z;
+				Vector3 scale = FenceRail.transform.localScale;
+				scale.z = Vector3.Distance (position, positionNext) * scale.z / length;
+				rail.transform.localScale = scale;
+			}
 		}
 	}
 

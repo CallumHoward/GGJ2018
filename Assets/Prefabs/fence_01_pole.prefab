@@ -23,7 +23,8 @@ GameObject:
   - component: {fileID: 23589093924146196}
   - component: {fileID: 95778120595372682}
   - component: {fileID: 136624735418322862}
-  m_Layer: 0
+  - component: {fileID: 208684099754731640}
+  m_Layer: 11
   m_Name: fence_01_pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,8 +108,23 @@ CapsuleCollider:
   m_GameObject: {fileID: 1501813618667698}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.01
   m_Height: 0.11651242
   m_Direction: 1
   m_Center: {x: -4.656613e-10, y: 0.00050000474, z: 0}
+--- !u!208 &208684099754731640
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1501813618667698}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.010000001, y: 0.058000002, z: 0.010000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.001, z: 0}
+  m_TimeToStationary: 0.5
