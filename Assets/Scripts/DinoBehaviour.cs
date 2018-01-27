@@ -38,4 +38,11 @@ public class DinoBehaviour : MonoBehaviour {
 			c.GetComponent<DinoPen> ().DinoEnter (this);
         }
     }
+
+	void OnTriggerExit(Collider c) {
+		if (c.tag == "Pen") {
+			isCorralled = false;
+			c.GetComponent<DinoPen> ().DinoExit (this);
+		}
+	}
 }

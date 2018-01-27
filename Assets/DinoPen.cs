@@ -20,4 +20,9 @@ public class DinoPen : MonoBehaviour {
 		score++;
 		Debug.Log ("Score: " + score);
 	}
+
+	public void DinoExit(DinoBehaviour d) {
+		score--;
+		Debug.Log ("Score: " + score);
+	}
 }
