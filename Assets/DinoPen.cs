@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class DinoPen : MonoBehaviour {
 
+	int score;
+
 	// Use this for initialization
 	void Start () {
-		
+		score = 0;
 	}
 	
 	// Update is called once per frame
@@ -15,6 +17,7 @@ public class DinoPen : MonoBehaviour {
 	}
 
 	public void DinoEnter(DinoBehaviour d) {
-		Debug.Log ("Got a dino");
+		score++;
+		Debug.Log ("Score: " + score);
 	}
 }
