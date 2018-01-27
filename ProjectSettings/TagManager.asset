@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Pen
+  - Raptor
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Raptor
   - Pen
   - Detector
-  - 
+  - Obstacle
   - 
   - 
   - 
