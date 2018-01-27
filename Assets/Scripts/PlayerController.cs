@@ -26,6 +26,7 @@ public class Variables
     public GameObject cameraPosition;
     public GameObject cameraPrefab;
     public Vector3 currentRotation;
+	public GameObject radarTransmission;
 
     [Header("Movement")]
     public float forwardSpeed = 8f;
@@ -153,7 +154,7 @@ public class PlayerController : NetworkBehaviour
             GetComponent<CapsuleCollider>().height = Variables.colliderHeight;
 
         }
-        Vector3 Direction = new Vector3(Input.GetAxisRaw("Horizontal_Player_1"), 0f, Input.GetAxisRaw("Vertical_Player_1"));
+		Vector3 Direction = new Vector3(Input.GetAxisRaw("Horizontal_Player_1"), 0f, Input.GetAxisRaw("Vertical_Player_1")).normalized;
         Direction = Variables.rotationReference.transform.TransformDirection(Direction);
         Direction.y = 0f;
         Vector3 currentPos = Variables.player.transform.position;
@@ -226,6 +227,9 @@ public class PlayerController : NetworkBehaviour
 
         }
         
+		if (Input.GetAxis ("Radar_Player_1") == 1) {
+			Variables.radarTransmission.GetComponent<RadarController> ().Transmit ();
+		}
     }
 
     //Collision Detection

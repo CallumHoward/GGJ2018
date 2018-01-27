@@ -5,18 +5,21 @@ using UnityEngine.AI;
 
 public class DinoBehaviour : MonoBehaviour {
 
-	public enum State { Idle, Chase, Corralled };
+	public enum State { Idle, Chase, Hypnotised, Corralled };
 	public State state = State.Idle;
 	float stateCounter;
+	float hypnosisCounter;
 	GameObject pen;
     public GameObject goal;
     [Range(0f, 100f)]
     public float viewDistance = 40f;
     NavMeshAgent agent;
-	public float CHASE_SPEED = 6f;
-	public float CORRALLED_SPEED = 2f;
-	public float IDLE_SPEED = 1f;
-	public float IDLE_WANDER_RADIUS = 5f;
+	public float CHASE_SPEED;
+	public float CORRALLED_SPEED;
+	public float IDLE_SPEED;
+	public float IDLE_WANDER_RADIUS;
+	public float HYPNOTISED_SPEED;
+	public float HYPNOSIS_DURATION;
 
     public PlayerRaycastCheck playerRaycastCheck;
 
@@ -24,6 +27,7 @@ public class DinoBehaviour : MonoBehaviour {
     void Start () {
         agent = GetComponent<NavMeshAgent>();
 		stateCounter = 0;
+		hypnosisCounter = 0;
     }
     
     // Update is called once per frame
@@ -37,6 +41,9 @@ public class DinoBehaviour : MonoBehaviour {
 			break;
 		case State.Chase:
 			Chase ();
+			break;
+		case State.Hypnotised:
+			Hypnotised ();
 			break;
 		case State.Corralled:
 			Corralled ();
@@ -80,6 +87,22 @@ public class DinoBehaviour : MonoBehaviour {
 		agent.speed = CHASE_SPEED;
 	}
 
+	void Hypnotised() {
+		if (hypnosisCounter <= 0) {
+			OnIdle ();
+		} else {
+			hypnosisCounter -= Time.deltaTime;
+			agent.destination = goal.transform.position;
+		}
+	}
+
+	void OnHypnotised(GameObject hypnotiser) {
+		goal = hypnotiser;
+		agent.speed = HYPNOTISED_SPEED;
+		state = State.Hypnotised;
+		hypnosisCounter = HYPNOSIS_DURATION;
+	}
+
 	void Corralled() {
 		// Wander to random position within pen
 		stateCounter -= Time.deltaTime;
@@ -121,4 +144,11 @@ public class DinoBehaviour : MonoBehaviour {
 			}
 		}
     }
+
+	void OnTriggerStay(Collider c) {
+		if (c.tag == "Radar" && state != State.Corralled) {
+			Debug.Log ("Hypnotised");
+			OnHypnotised (c.gameObject);
+		}
+	}
 }
