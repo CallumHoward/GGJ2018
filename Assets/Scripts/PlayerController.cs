@@ -60,10 +60,7 @@ public class PlayerController : NetworkBehaviour
     void Init()
     {
         UnityEditor.EditorWindow window = EditorWindow.GetWindow(typeof(PlayerController));
-        window.Show();
-
-        GameObject networkManager = GameObject.Find("Network Manager");
-        
+        window.Show();        
     }
 
     public Variables Variables = new Variables();
@@ -97,7 +94,7 @@ public class PlayerController : NetworkBehaviour
 		}
 	}
 
-    public static Color Test(PLAYER _PLAYER)
+    public Color Test(PLAYER _PLAYER)
     {
         switch (_PLAYER)
         {
@@ -117,15 +114,6 @@ public class PlayerController : NetworkBehaviour
         return Color.magenta;
     }
 
-    public static void colourListener()
-    {
-        for (int i = 0; i <= NetworkServer.connections.Count-1; i++)
-        {
-            NetworkServer.connections[i].playerControllers[0].gameObject.GetComponent<PlayerController>()._PLAYER = (PLAYER)i;
-            NetworkServer.connections[i].playerControllers[0].gameObject.GetComponentInChildren<Renderer>().material.color = Test(NetworkServer.connections[i].playerControllers[0].gameObject.GetComponent<PlayerController>()._PLAYER);
-        }
-    }
-
 
 
 
@@ -139,6 +127,13 @@ public class PlayerController : NetworkBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
+        for (int i = 0; i <= NetworkServer.connections.Count - 1; i++)
+        {
+            NetworkServer.connections[i].playerControllers[0].gameObject.GetComponent<PlayerController>()._PLAYER = (PLAYER)i;
+            NetworkServer.connections[i].playerControllers[0].gameObject.GetComponentInChildren<Renderer>().material.color = Test(NetworkServer.connections[i].playerControllers[0].gameObject.GetComponent<PlayerController>()._PLAYER);
+        }
+
         float colliderHeightTemp = Variables.colliderHeight / 2f;
 
         if (!isLocalPlayer)
