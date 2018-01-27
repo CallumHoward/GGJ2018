@@ -10,10 +10,13 @@ public class DinoPen : MonoBehaviour {
 	public GameObject Gate;
 	public float FENCE_SECTION_LENGTH_MAX;
 	public int NUM_GATES;
+	public float GateLengthRatio = 1.4f;
+	float gateLength;
 
 	// Use this for initialization
 	void Start () {
 		dinoNames = new HashSet<string> ();
+		gateLength = FenceRail.GetComponent<Renderer> ().bounds.size.z * GateLengthRatio;
 		SpawnFence ();
 	}
 
@@ -23,6 +26,19 @@ public class DinoPen : MonoBehaviour {
 		HashSet<int> gateIndices = new HashSet<int>();
 		for (int i = 0; i < NUM_GATES; i++) {
 			gateIndices.Add((int)(polePositions.Count * (i + 0.5f) / NUM_GATES));
+		}
+		// Need to move poles apart so they fit the gate
+		for (int i = 0; i < polePositions.Count; i++) {
+			if (gateIndices.Contains (i)) {
+				Vector3 position = polePositions [i];
+				Vector3 positionNext = polePositions [(i + 1) % polePositions.Count];
+				Vector3 dv = positionNext - position;
+				dv = dv.normalized * gateLength * 0.5f;
+				Vector3 midPosition = Vector3.Lerp (position, positionNext, 0.5f);
+				polePositions [i] = midPosition - dv;
+				polePositions [(i + 1) % polePositions.Count] = midPosition + dv;
+				i++;
+			}
 		}
 		// Spawn fence poles and rails at pole positions
 		for (int i = 0; i < polePositions.Count; i++) {
