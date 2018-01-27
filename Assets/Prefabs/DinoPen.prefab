@@ -92,7 +92,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.2572827, y: 2, z: 5.3420124}
+  m_Size: {x: 8, y: 2, z: 8}
   m_Center: {x: 0, y: 1.110223e-16, z: 0}
 --- !u!114 &114191406600571102
 MonoBehaviour:
@@ -107,4 +107,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FencePole: {fileID: 1501813618667698, guid: e0062da2539cb1c49a2e3053ac81add9, type: 2}
   FenceRail: {fileID: 1188023595814916, guid: 454bf3dc8dabd504fab8684982bde305, type: 2}
-  FENCE_SECTION_LENGTH_MAX: 3
+  FENCE_SECTION_LENGTH_MAX: 4

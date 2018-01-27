@@ -114,7 +114,7 @@ public class DinoBehaviour : MonoBehaviour {
 			OnCorralled ();
 			c.GetComponent<DinoPen> ().DinoEnter (this);
 			pen = c.gameObject;
-		} else if (c.tag == "Player") {
+		} else if (c.tag == "Player" && state != State.Corralled) {
 			PlayerController pc = c.GetComponent<PlayerController> ();
 			if (pc != null) {
 				pc.DinoEat (this);
