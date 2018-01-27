@@ -17,14 +17,18 @@ public class DinoPen : MonoBehaviour {
 	}
 
 	public void DinoEnter(DinoBehaviour d) {
-		dinoNames.Add (d.name);
-		int score = dinoNames.Count;
-		Debug.Log ("Score: " + score);
+		if (!dinoNames.Contains (d.name)) {
+			dinoNames.Add (d.name);
+			int score = dinoNames.Count;
+			Debug.Log ("Score: " + score);
+		}
 	}
 
 	public void DinoExit(DinoBehaviour d) {
-		dinoNames.Remove(d.name);
-		int score = dinoNames.Count;
-		Debug.Log ("Score: " + score);
+		if (dinoNames.Contains (d.name)) {
+			dinoNames.Remove (d.name);
+			int score = dinoNames.Count;
+			Debug.Log ("Score: " + score);
+		}
 	}
 }
