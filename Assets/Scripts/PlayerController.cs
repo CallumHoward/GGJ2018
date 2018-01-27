@@ -91,6 +91,10 @@ public class PlayerController : NetworkBehaviour
 		gameObject.GetComponentInChildren<Camera>().transform.parent = null;
 		Destroy (gameObject);
 		Debug.Log ("Eaten");
+		if (FindObjectsOfType<PlayerController> ().Length == 1) {
+			// Last player left; end game
+			Debug.Log("Game over");
+		}
 	}
 
     public static Color Test(PLAYER _PLAYER)
