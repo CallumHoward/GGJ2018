@@ -21,34 +21,61 @@ public class DinoBehaviour : MonoBehaviour {
 	public float HYPNOTISED_SPEED;
 	public float HYPNOSIS_DURATION;
 
+    [Header("Animation")]
+    public Animation anim;
+    public AnimationClip idleAnim;
+    public AnimationClip walkAnim;
+    public AnimationClip attackAnim;
+    public AnimationClip spottedAnim;
+    public AnimationClip jumpAnim;
+
     public PlayerRaycastCheck playerRaycastCheck;
 
     // Use this for initialization
     void Start () {
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animation>();
 		stateCounter = 0;
 		hypnosisCounter = 0;
     }
-    
+
     // Update is called once per frame
-    void Update () {
-		if (goal == null) {
-			goal = GameObject.Find ("PlayerController(Clone)");
-		}
-		switch (state) {
-		case State.Idle:
-			Idle ();
-			break;
-		case State.Chase:
-			Chase ();
-			break;
-		case State.Hypnotised:
-			Hypnotised ();
-			break;
-		case State.Corralled:
-			Corralled ();
-			break;
-		}
+    void Update() {
+        if (goal == null) {
+            goal = GameObject.Find("PlayerController(Clone)");
+        }
+        switch (state) {
+            case State.Idle:
+                Idle();
+                break;
+            case State.Chase:
+                Chase();
+                break;
+            case State.Hypnotised:
+                Hypnotised();
+                break;
+            case State.Corralled:
+                Corralled();
+                break;
+        }
+        
+        if (Vector3.Distance(agent.destination, transform.position) > 0.2f)
+        {
+            anim.clip = walkAnim;
+            if (!anim.IsPlaying(walkAnim.name))
+            {
+                anim.CrossFade(walkAnim.name, 0.2F, PlayMode.StopAll);
+            }
+        }
+        else
+        {
+            anim.clip = idleAnim;
+            if (!anim.IsPlaying(idleAnim.name))
+            {
+                anim.CrossFade(idleAnim.name, 0.2F, PlayMode.StopAll);
+            }
+        }
+
     }
 
 	void Idle() {
@@ -131,6 +158,7 @@ public class DinoBehaviour : MonoBehaviour {
 	bool CanChaseGoal() {
 		return goal != null && playerRaycastCheck.isChasing && Vector3.Distance (transform.position, goal.transform.position) < viewDistance;
 	}
+    
 
     void OnTriggerEnter(Collider c) {
 		if (c.tag == "Pen") {

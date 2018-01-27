@@ -974,7 +974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f96f4205875ca794b90789dc0e23c0b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _PLAYER: 2
+  _PLAYER: 0
   Variables:
     player: {fileID: 0}
     childModel: {fileID: 1186448824185706}
@@ -983,7 +983,7 @@ MonoBehaviour:
     cameraPrefab: {fileID: 1795360907666080, guid: 0781bb36a2135654b96f2571750b64f3,
       type: 2}
     currentRotation: {x: 0, y: 0, z: 0}
-    radarTransmission: {fileID: 1568727472050160}
+    radarTransmission: {fileID: 0}
     forwardSpeed: 8
     sprintSpeed: 15
     jumpForce: 5
@@ -992,7 +992,6 @@ MonoBehaviour:
     colliderHeight: 0
     jumpAllowed: 1
     grounded: 1
-  playerCount: 0
 --- !u!114 &114834582044401778
 MonoBehaviour:
   m_ObjectHideFlags: 1

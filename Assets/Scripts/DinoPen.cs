@@ -49,7 +49,8 @@ public class DinoPen : MonoBehaviour {
 				PlaceRailOrGate(Gate, position, positionNext);
 			} else {
 				if (!gateIndices.Contains ((i - 1 + polePositions.Count) % polePositions.Count)) {
-					Instantiate (FencePole, transform.position + position, Quaternion.identity);
+				GameObject temp = Instantiate (FencePole, transform.position + position, Quaternion.identity);
+                    temp.transform.parent = this.transform;
 				}
 
 				// Place railing
@@ -72,6 +73,7 @@ public class DinoPen : MonoBehaviour {
 		Vector3 scale = parent.transform.localScale;
 		scale.z = Vector3.Distance (position, positionNext) * scale.z / length;
 		obj.transform.localScale = scale;
+        obj.transform.parent = this.transform;
 	}
 
 	List<Vector3> GetPolePositions() {

@@ -161,9 +161,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4425867769581144}
+  - component: {fileID: 65179698654395698}
   m_Layer: 2
   m_Name: r_ankle_jnt
-  m_TagString: Untagged
+  m_TagString: Raptor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -403,9 +404,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4368108878448854}
+  - component: {fileID: 65970584746813082}
   m_Layer: 2
   m_Name: l_ankle_jnt
-  m_TagString: Untagged
+  m_TagString: Raptor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -432,7 +434,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1189724185137240}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 190.20186, y: -0.016, z: 294.39026}
+  m_LocalPosition: {x: 237.1969, y: 0, z: 266.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4979231736604716}
@@ -815,8 +817,20 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 122
   m_CollisionDetection: 2
+--- !u!65 &65179698654395698
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1432811097090948}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.75, y: 0.43, z: 0.51}
+  m_Center: {x: -0.21, y: 0, z: 0}
 --- !u!65 &65428062375627326
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -827,8 +841,20 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.12, y: 2.80345, z: 4.2822466}
-  m_Center: {x: 0, y: 1.4019849, z: -0.546123}
+  m_Size: {x: 1.12, y: 2.6219933, z: 4.2822466}
+  m_Center: {x: 0, y: 1.4927133, z: -0.546123}
+--- !u!65 &65970584746813082
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1898311963401980}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.75, y: 0.43, z: 0.51}
+  m_Center: {x: 0.24, y: 0, z: 0}
 --- !u!111 &111151335960525266
 Animation:
   m_ObjectHideFlags: 1
@@ -860,12 +886,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  goal: {fileID: 1634509590536468, guid: b3ecf84db9094ce4eb2f99f36c98162a, type: 2}
+  goal: {fileID: 0}
   viewDistance: 40
   CHASE_SPEED: 12
   CORRALLED_SPEED: 1.56
   IDLE_SPEED: 3.05
   IDLE_WANDER_RADIUS: 5
+  HYPNOTISED_SPEED: 0
+  HYPNOSIS_DURATION: 0
+  anim: {fileID: 0}
+  idleAnim: {fileID: 7400000, guid: b247ce71c3591da46827c5cdcbb40160, type: 3}
+  walkAnim: {fileID: 7400002, guid: b247ce71c3591da46827c5cdcbb40160, type: 3}
+  attackAnim: {fileID: 7400004, guid: b247ce71c3591da46827c5cdcbb40160, type: 3}
+  spottedAnim: {fileID: 7400006, guid: b247ce71c3591da46827c5cdcbb40160, type: 3}
+  jumpAnim: {fileID: 7400008, guid: b247ce71c3591da46827c5cdcbb40160, type: 3}
   playerRaycastCheck: {fileID: 114463486701348894}
 --- !u!114 &114004623745997990
 MonoBehaviour:
@@ -1011,7 +1045,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 1.5
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 30
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -1019,6 +1053,6 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 3
-  m_BaseOffset: 0
+  m_BaseOffset: -0.18
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
