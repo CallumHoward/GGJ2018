@@ -57,16 +57,22 @@ public class PlayerController : NetworkBehaviour
 {
     public PLAYER _PLAYER;
     [MenuItem("Examples/Editor GUILayout Enum Popup usage")]
-    static void Init()
+    void Init()
     {
         UnityEditor.EditorWindow window = EditorWindow.GetWindow(typeof(PlayerController));
         window.Show();
+
+        GameObject networkManager = GameObject.Find("Network Manager");
+        NetworkOverride.OnNewPlayer += colourListener;
     }
-    
+    private void OnDisable()
+    {
+        NetworkOverride.OnNewPlayer -= colourListener;
+    }
+
     public Variables Variables = new Variables();
     public PlayerAnimations PlayerAnimations = new PlayerAnimations();
-
-
+    
 
     // Use this for initialization
     void Start()
@@ -105,7 +111,13 @@ public class PlayerController : NetworkBehaviour
         return Color.magenta;
     }
 
-
+    public void colourListener()
+    {
+        for (int i = 0; i <= NetworkServer.connections.Count-1; i++)
+        {
+            NetworkServer.connections[i].playerControllers[0].gameObject.GetComponent<PlayerController>()._PLAYER = (PLAYER)i;
+        }
+    }
 
 
 
@@ -126,7 +138,7 @@ public class PlayerController : NetworkBehaviour
         {
             return;
         }
-        if (Input.GetAxis("Crouch_" + _PLAYER.ToString()) == 1)
+        if (Input.GetAxis("Crouch_Player_1") == 1)
         {
             Variables.forwardSpeed = 3f;
             GetComponent<CapsuleCollider>().center = new Vector3(0f, -0.5f, 0f);
@@ -139,21 +151,21 @@ public class PlayerController : NetworkBehaviour
             GetComponent<CapsuleCollider>().height = Variables.colliderHeight;
 
         }
-        Vector3 Direction = new Vector3(Input.GetAxisRaw("Horizontal_" + _PLAYER.ToString()), 0f, Input.GetAxisRaw("Vertical_" + _PLAYER.ToString()));
+        Vector3 Direction = new Vector3(Input.GetAxisRaw("Horizontal_Player_1"), 0f, Input.GetAxisRaw("Vertical_Player_1"));
         Direction = Variables.rotationReference.transform.TransformDirection(Direction);
         Direction.y = 0f;
         Vector3 currentPos = Variables.player.transform.position;
-        if (Input.GetAxis("Jump_" + _PLAYER.ToString()) == 1 && Variables.jumpAllowed == true)
+        if (Input.GetAxis("Jump_Player_1") == 1 && Variables.jumpAllowed == true)
         {
             if (Variables.grounded == true)
             {
                 Variables.grounded = false;
-                Variables.player.velocity = (new Vector3(0f, Input.GetAxis("Jump_" + _PLAYER.ToString()) * Variables.jumpForce, 0f));
+                Variables.player.velocity = (new Vector3(0f, Input.GetAxis("Jump_Player_1") * Variables.jumpForce, 0f));
 
             }
         }
 
-        if (Input.GetAxis("Sprint_" + _PLAYER.ToString()) == 1f)
+        if (Input.GetAxis("Sprint_Player_1") == 1f)
         {
             Variables.player.position = (transform.position + Direction * Time.deltaTime * Variables.sprintSpeed);
 
@@ -163,7 +175,7 @@ public class PlayerController : NetworkBehaviour
             Variables.player.position = (transform.position + Direction * Time.deltaTime * Variables.forwardSpeed);
         }
 
-        if (Input.GetAxisRaw("Horizontal_" + _PLAYER.ToString()) != 0f || Input.GetAxisRaw("Vertical_" + _PLAYER.ToString()) != 0f)
+        if (Input.GetAxisRaw("Horizontal_Player_1") != 0f || Input.GetAxisRaw("Vertical_Player_1") != 0f)
         {
             //if (Input.GetAxis("Crouch") == 1)
             //{
@@ -183,7 +195,7 @@ public class PlayerController : NetworkBehaviour
             //    }
             //
             //}
-            Vector3 Movement = new Vector3(Input.GetAxisRaw("Horizontal_"+ _PLAYER.ToString()), 0f, Input.GetAxisRaw("Vertical_" + _PLAYER.ToString()));
+            Vector3 Movement = new Vector3(Input.GetAxisRaw("Horizontal_Player_1"), 0f, Input.GetAxisRaw("Vertical_Player_1"));
             Movement = Camera.main.transform.TransformDirection(Movement);
             Movement.y = 0f;
             Variables.childModel.transform.rotation = Quaternion.LookRotation(Movement) * Quaternion.Inverse(Quaternion.Euler(0f, 0f, 0f));
@@ -191,7 +203,7 @@ public class PlayerController : NetworkBehaviour
         }
         else
         {
-            if (Input.GetAxis("Crouch_" + _PLAYER.ToString()) == 1)
+            if (Input.GetAxis("Crouch_Player_1") == 1)
             {
                 //Variables.anim.clip = Variables.crouchIdleAnim;
                 //if (!Variables.anim.IsPlaying(Variables.crouchIdleAnim.name))

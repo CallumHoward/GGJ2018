@@ -18,7 +18,6 @@ public class PlayerRaycastCheck : MonoBehaviour {
         {
             player = GameObject.Find("PlayerController(Clone)");
         }
-        
     }
 	
 	// Update is called once per frame

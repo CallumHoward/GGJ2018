@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
+
 public class NetworkOverride : NetworkManager {
 
-    
+    public delegate void NewPlayer();
+    public static event NewPlayer OnNewPlayer;
+
     public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
     {
         base.OnServerAddPlayer(conn, playerControllerId);
@@ -21,15 +24,12 @@ public class NetworkOverride : NetworkManager {
         print(NetworkServer.connections.Count);
         print(NetworkServer.connections[NetworkServer.connections.Count - 1].playerControllers[0].gameObject.GetInstanceID());
         print(NetworkServer.connections[NetworkServer.connections.Count - 1].playerControllers[0].gameObject);
-        NetworkServer.connections[NetworkServer.connections.Count - 1].playerControllers[0].gameObject.GetComponent<PlayerController>()._PLAYER = (PLAYER)NetworkServer.connections.Count - 1;
+
+        if (OnNewPlayer != null)
+            OnNewPlayer();
+        
         //print(conn.playerControllers[0].gameObject.GetInstanceID());
-        int counter = NetworkServer.connections.Count;
-        foreach (PlayerController pc in FindObjectsOfType<PlayerController>())
-        {
-            //print(pc.GetInstanceID());
-            //pc.gameObject.GetComponentInChildren<Renderer>().material.color = pc.Test();
-            NetworkServer.connections[NetworkServer.connections.Count - 1].playerControllers[0].gameObject.GetComponentInChildren<Renderer>().material.color = NetworkServer.connections[NetworkServer.connections.Count - 1].playerControllers[0].gameObject.GetComponent<PlayerController>().Test();
-        }
+        
     }
     
 }
