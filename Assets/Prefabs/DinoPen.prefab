@@ -81,7 +81,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1674901005614872}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &65990979710638358
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -107,4 +107,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FencePole: {fileID: 1501813618667698, guid: e0062da2539cb1c49a2e3053ac81add9, type: 2}
   FenceRail: {fileID: 1188023595814916, guid: 454bf3dc8dabd504fab8684982bde305, type: 2}
-  FENCE_SECTION_LENGTH_MAX: 4
+  FENCE_SECTION_LENGTH_MAX: 3
