@@ -273,6 +273,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114191406600571102, guid: f99f853905602874fa725256383a982a,
+        type: 2}
+      propertyPath: FENCE_SECTION_LENGTH_MAX
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f99f853905602874fa725256383a982a, type: 2}
   m_IsPrefabParent: 0

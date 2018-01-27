@@ -89,7 +89,12 @@ public class PlayerController : NetworkBehaviour
         Variables.colliderHeight = GetComponent<CapsuleCollider>().height;
     }
 
-    
+	public void DinoEat(DinoBehaviour d) {
+		// Detach camera
+		gameObject.GetComponentInChildren<Camera>().transform.parent = null;
+		Destroy (gameObject);
+		Debug.Log ("Eaten");
+	}
 
     public Color Test()
     {

@@ -110,10 +110,15 @@ public class DinoBehaviour : MonoBehaviour {
 	}
 
     void OnTriggerEnter(Collider c) {
-        if (c.tag == "Pen") {
+		if (c.tag == "Pen") {
 			OnCorralled ();
 			c.GetComponent<DinoPen> ().DinoEnter (this);
 			pen = c.gameObject;
-        }
+		} else if (c.tag == "Player" && state != State.Corralled) {
+			PlayerController pc = c.GetComponent<PlayerController> ();
+			if (pc != null) {
+				pc.DinoEat (this);
+			}
+		}
     }
 }
