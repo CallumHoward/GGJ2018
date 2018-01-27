@@ -84,6 +84,40 @@ public class PlayerController : NetworkBehaviour
         Variables.colliderHeight = GetComponent<CapsuleCollider>().height;
     }
 
+    
+
+    public Color Test()
+    {
+        switch (_PLAYER)
+        {
+            case PLAYER.Player_1:
+                return Color.red;
+                
+            case PLAYER.Player_2:
+                return Color.blue;
+                
+            case PLAYER.Player_3:
+                return Color.green;
+                
+            case PLAYER.Player_4:
+                return Color.yellow;
+                
+        }
+        return Color.magenta;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     // Update is called once per frame
     void FixedUpdate()
     {
