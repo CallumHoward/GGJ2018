@@ -63,11 +63,7 @@ public class PlayerController : NetworkBehaviour
         window.Show();
 
         GameObject networkManager = GameObject.Find("Network Manager");
-        NetworkOverride.OnNewPlayer += colourListener;
-    }
-    private void OnDisable()
-    {
-        NetworkOverride.OnNewPlayer -= colourListener;
+        
     }
 
     public Variables Variables = new Variables();
@@ -81,6 +77,7 @@ public class PlayerController : NetworkBehaviour
         {
             return;
         }
+        
         GameObject newCamera = Instantiate(Variables.cameraPrefab, Variables.cameraPosition.transform.position, Variables.cameraPosition.transform.rotation);
         newCamera.transform.parent = gameObject.transform;
         //Variables.anim = GetComponent<Animation>();
@@ -96,7 +93,7 @@ public class PlayerController : NetworkBehaviour
 		Debug.Log ("Eaten");
 	}
 
-    public Color Test()
+    public static Color Test(PLAYER _PLAYER)
     {
         switch (_PLAYER)
         {
@@ -116,11 +113,12 @@ public class PlayerController : NetworkBehaviour
         return Color.magenta;
     }
 
-    public void colourListener()
+    public static void colourListener()
     {
         for (int i = 0; i <= NetworkServer.connections.Count-1; i++)
         {
             NetworkServer.connections[i].playerControllers[0].gameObject.GetComponent<PlayerController>()._PLAYER = (PLAYER)i;
+            NetworkServer.connections[i].playerControllers[0].gameObject.GetComponentInChildren<Renderer>().material.color = Test(NetworkServer.connections[i].playerControllers[0].gameObject.GetComponent<PlayerController>()._PLAYER);
         }
     }
 
