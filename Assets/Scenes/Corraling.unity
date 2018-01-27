@@ -404,16 +404,6 @@ Prefab:
       propertyPath: m_Name
       value: Dinosaur_Animated (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 65179698654395698, guid: 7a984e6975488344abca970d1bee6358,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 65970584746813082, guid: 7a984e6975488344abca970d1bee6358,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a984e6975488344abca970d1bee6358, type: 2}
   m_IsPrefabParent: 0
