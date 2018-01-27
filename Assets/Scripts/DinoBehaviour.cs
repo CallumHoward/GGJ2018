@@ -38,20 +38,16 @@ public class DinoBehaviour : MonoBehaviour {
     // Use this for initialization
     void Start () {
         agent = GetComponent<NavMeshAgent>();
-<<<<<<< HEAD
         anim = GetComponent<Animation>();
-=======
-		agent.angularSpeed = ANGULAR_SPEED;
->>>>>>> 54a13a0d149b0e203aba18503d73b5aef03bb47e
 		stateCounter = 0;
     }
 
     // Update is called once per frame
-<<<<<<< HEAD
     void Update() {
         if (goal == null) {
             goal = GameObject.Find("PlayerController(Clone)");
         }
+        agent.angularSpeed = ANGULAR_SPEED;
         switch (state) {
             case State.Idle:
                 Idle();
@@ -83,31 +79,7 @@ public class DinoBehaviour : MonoBehaviour {
                 anim.CrossFade(idleAnim.name, 0.2F, PlayMode.StopAll);
             }
         }
-
-=======
-    void Update () {
-		if (goal == null) {
-			goal = GameObject.Find ("PlayerController(Clone)");
-		}
-		agent.angularSpeed = ANGULAR_SPEED;
-		switch (state) {
-		case State.Idle:
-			Idle ();
-			break;
-		case State.Spotted:
-			Spotted ();
-			break;
-		case State.Chase:
-			Chase ();
-			break;
-		case State.Hypnotised:
-			Hypnotised ();
-			break;
-		case State.Corralled:
-			Corralled ();
-			break;
-		}
->>>>>>> 54a13a0d149b0e203aba18503d73b5aef03bb47e
+        
     }
 
 	void Idle() {
