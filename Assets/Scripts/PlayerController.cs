@@ -27,6 +27,8 @@ public class Variables
     public GameObject cameraPrefab;
     public Vector3 currentRotation;
 	public GameObject radarTransmission;
+	public float RADAR_COOLDOWN;
+	public float radarCooldownCounter;
 
     [Header("Movement")]
     public float forwardSpeed = 8f;
@@ -81,7 +83,8 @@ public class PlayerController : NetworkBehaviour
         //Variables.anim = GetComponent<Animation>();
         Variables.player = gameObject.GetComponent<Rigidbody>();
         Variables.colliderPos = GetComponent<CapsuleCollider>().center.y;
-        Variables.colliderHeight = GetComponent<CapsuleCollider>().height;
+		Variables.colliderHeight = GetComponent<CapsuleCollider>().height;
+		Variables.radarCooldownCounter = 0;
     }
 
 	public void DinoEat(DinoBehaviour d) {
@@ -226,9 +229,11 @@ public class PlayerController : NetworkBehaviour
             }
 
         }
-        
-		if (Input.GetAxis ("Radar_Player_1") == 1) {
+
+		Variables.radarCooldownCounter -= Time.deltaTime;
+		if (Input.GetAxis ("Radar_Player_1") == 1 && Variables.radarCooldownCounter <= 0) {
 			Variables.radarTransmission.GetComponent<RadarController> ().Transmit ();
+			Variables.radarCooldownCounter = Variables.RADAR_COOLDOWN;
 		}
     }
 
