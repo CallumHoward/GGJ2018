@@ -6,6 +6,8 @@ public class GateController : MonoBehaviour {
 
 	Animation anim;
 	public float AnimationSpeed;
+	float openCounter;
+	public float OPEN_DURATION;
 	bool open;
 
 	// Use this for initialization
@@ -17,11 +19,29 @@ public class GateController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown("g")) {
-			PlayAnimation ("LatchOpen", open);
-			PlayAnimation ("GateOpen", open);
-			open = !open;
+		openCounter -= Time.deltaTime;
+		if (openCounter <= 0) {
+			CloseGate ();
 		}
+	}
+
+	public void OpenGate() {
+		openCounter = OPEN_DURATION;
+		if (open) {
+			return;
+		}
+		PlayAnimation ("LatchOpen", false);
+		PlayAnimation ("GateOpen", false);
+		open = true;
+	}
+
+	void CloseGate() {
+		if (!open) {
+			return;
+		}
+		PlayAnimation ("LatchOpen", true);
+		PlayAnimation ("GateOpen", true);
+		open = false;
 	}
 
 	void PlayAnimation(string name, bool reverse) {
