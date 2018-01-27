@@ -66,23 +66,6 @@ public class DinoBehaviour : MonoBehaviour {
                 break;
         }
         
-        if (Vector3.Distance(agent.destination, transform.position) > 0.2f)
-        {
-            anim.clip = walkAnim;
-            if (!anim.IsPlaying(walkAnim.name))
-            {
-                anim.CrossFade(walkAnim.name, 0.2F, PlayMode.StopAll);
-            }
-        }
-        else
-        {
-            anim.clip = idleAnim;
-            if (!anim.IsPlaying(idleAnim.name))
-            {
-                anim.CrossFade(idleAnim.name, 0.2F, PlayMode.StopAll);
-            }
-        }
-        
     }
 
 	void Idle() {
@@ -96,6 +79,23 @@ public class DinoBehaviour : MonoBehaviour {
 				Vector3 wanderTo3 = new Vector3 (wanderTo2.x, 0, wanderTo2.y);
 				agent.destination = transform.position + wanderTo3;
 				stateCounter += Random.Range (3f, 9f);
+			}
+
+			if (Vector3.Distance(agent.destination, transform.position) > 0.2f)
+			{
+				anim.clip = walkAnim;
+				if (!anim.IsPlaying(walkAnim.name))
+				{
+					anim.CrossFade(walkAnim.name, 0.2F, PlayMode.StopAll);
+				}
+			}
+			else
+			{
+				anim.clip = idleAnim;
+				if (!anim.IsPlaying(idleAnim.name))
+				{
+					anim.CrossFade(idleAnim.name, 0.2F, PlayMode.StopAll);
+				}
 			}
 		}
 	}
@@ -113,6 +113,13 @@ public class DinoBehaviour : MonoBehaviour {
 		}
 		agent.angularSpeed = SPOTTED_ANGULAR_SPEED;
 		stateCounter -= Time.deltaTime;
+
+		anim.clip = spottedAnim;
+		if (!anim.IsPlaying(spottedAnim.name))
+		{
+			anim.CrossFade(spottedAnim.name, 0.1F, PlayMode.StopAll);
+		}
+
 		if (stateCounter <= 0) {
 			OnChase ();
 		}
@@ -128,6 +135,12 @@ public class DinoBehaviour : MonoBehaviour {
 
 	void Chase() {
 		stateCounter -= Time.deltaTime;
+		// TODO: run/chase anim
+		anim.clip = walkAnim;
+		if (!anim.IsPlaying(walkAnim.name))
+		{
+			anim.CrossFade(walkAnim.name, 0.1F, PlayMode.StopAll);
+		}
 		if (goal != null && (stateCounter > 0 || CanChaseGoal())) {
 			agent.destination = goal.transform.position;
 		} else {
@@ -148,6 +161,12 @@ public class DinoBehaviour : MonoBehaviour {
 		} else {
 			stateCounter -= Time.deltaTime;
 			agent.destination = goal.transform.position;
+			// TODO: run/chase anim
+			anim.clip = walkAnim;
+			if (!anim.IsPlaying(walkAnim.name))
+			{
+				anim.CrossFade(walkAnim.name, 0.1F, PlayMode.StopAll);
+			}
 		}
 	}
 
@@ -172,8 +191,26 @@ public class DinoBehaviour : MonoBehaviour {
 				pen.transform.position.x + Random.Range (-dx, dx),
 				pen.transform.position.y,
 				pen.transform.position.z + Random.Range (-dz, dz));
-			agent.destination = newVec;
+			Vector3 dv = newVec - transform.position;
+			dv = Vector3.ClampMagnitude (dv, 3);
+			agent.destination = transform.position + dv;
 			stateCounter += Random.Range (0.5f, 3f);
+		}
+		if (Vector3.Distance(agent.destination, transform.position) > 0.2f)
+		{
+			anim.clip = walkAnim;
+			if (!anim.IsPlaying(walkAnim.name))
+			{
+				anim.CrossFade(walkAnim.name, 0.2F, PlayMode.StopAll);
+			}
+		}
+		else
+		{
+			anim.clip = jumpAnim;
+			if (!anim.IsPlaying(jumpAnim.name))
+			{
+				anim.CrossFade(jumpAnim.name, 0.2F, PlayMode.StopAll);
+			}
 		}
 	}
 
@@ -181,6 +218,7 @@ public class DinoBehaviour : MonoBehaviour {
 		state = State.Corralled;
 		agent.speed = CORRALLED_SPEED;
 		stateCounter = 0;
+		agent.destination = transform.position;
 	}
 
 	bool CanChaseGoal() {

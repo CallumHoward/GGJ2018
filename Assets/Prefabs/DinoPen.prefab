@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1674901005614872}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 230.9, y: 0.3, z: 287.9}
+  m_LocalPosition: {x: 230.9, y: 0.05, z: 287.9}
   m_LocalScale: {x: 3.825666, y: 3.8256662, z: 3.8256662}
   m_Children: []
   m_Father: {fileID: 0}
@@ -92,7 +92,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8, y: 2, z: 8}
+  m_Size: {x: 7, y: 2, z: 7}
   m_Center: {x: 0, y: 1.110223e-16, z: 0}
 --- !u!114 &114191406600571102
 MonoBehaviour:
@@ -110,3 +110,4 @@ MonoBehaviour:
   Gate: {fileID: 1103045991716652, guid: d1cb4ce804afae7409afdad96826ff6d, type: 2}
   FENCE_SECTION_LENGTH_MAX: 4
   NUM_GATES: 4
+  GateLengthRatio: 1.4
