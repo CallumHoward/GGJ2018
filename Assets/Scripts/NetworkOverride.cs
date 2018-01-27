@@ -7,6 +7,8 @@ using UnityEngine.Networking;
 
 public class NetworkOverride : NetworkManager {
 
+    [SyncVar]
+    public int playerCount;
     public static UnityEvent OnNewPlayer;
 
     private void Start()
@@ -31,7 +33,7 @@ public class NetworkOverride : NetworkManager {
         print(NetworkServer.connections.Count);
         print(NetworkServer.connections[NetworkServer.connections.Count - 1].playerControllers[0].gameObject.GetInstanceID());
         print(NetworkServer.connections[NetworkServer.connections.Count - 1].playerControllers[0].gameObject);
-        
+        playerCount = NetworkServer.connections.Count;
     }
     
 }
