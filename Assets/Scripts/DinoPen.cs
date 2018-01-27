@@ -44,7 +44,7 @@ public class DinoPen : MonoBehaviour {
 
 	void PlaceRailOrGate(GameObject parent, Vector3 position, Vector3 positionNext) {
 		Vector3 midPosition = Vector3.Lerp (position, positionNext, 0.5f);
-		float yAngle = Vector3.SignedAngle (Vector3.forward, positionNext - position, Vector3.up);
+		float yAngle = Vector3.SignedAngle (Vector3.forward, position - positionNext, Vector3.up);
 		GameObject obj = Instantiate (
 			parent, transform.position + midPosition, Quaternion.AngleAxis (yAngle, Vector3.up));
 		if (parent.GetComponent<Renderer> () == null) {
