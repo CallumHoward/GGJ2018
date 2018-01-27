@@ -26,6 +26,7 @@ public class Variables
     public GameObject cameraPosition;
     public GameObject cameraPrefab;
     public Vector3 currentRotation;
+	public GameObject radarTransmission;
 
     [Header("Movement")]
     public float forwardSpeed = 8f;
@@ -228,6 +229,9 @@ public class PlayerController : NetworkBehaviour
 
         }
         
+		if (Input.GetAxis ("Radar_Player_1") == 1) {
+			Variables.radarTransmission.GetComponent<RadarController> ().Transmit ();
+		}
     }
 
     //Collision Detection
