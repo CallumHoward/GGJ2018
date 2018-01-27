@@ -40,6 +40,8 @@ public class DinoBehaviour : MonoBehaviour {
     }
 
 	void OnTriggerExit(Collider c) {
+		// TODO: causing score to fluctuate as dinos repeatedly trigger on the pen;
+		// revise conditions where dinos exit the pen and become "uncorralled"
 		if (c.tag == "Pen") {
 			isCorralled = false;
 			c.GetComponent<DinoPen> ().DinoExit (this);

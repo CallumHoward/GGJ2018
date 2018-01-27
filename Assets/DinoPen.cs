@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DinoPen : MonoBehaviour {
 
-	int score;
+	HashSet<string> dinoNames;
 
 	// Use this for initialization
 	void Start () {
-		score = 0;
+		dinoNames = new HashSet<string> ();
 	}
 	
 	// Update is called once per frame
@@ -17,12 +17,14 @@ public class DinoPen : MonoBehaviour {
 	}
 
 	public void DinoEnter(DinoBehaviour d) {
-		score++;
+		dinoNames.Add (d.name);
+		int score = dinoNames.Count;
 		Debug.Log ("Score: " + score);
 	}
 
 	public void DinoExit(DinoBehaviour d) {
-		score--;
+		dinoNames.Remove(d.name);
+		int score = dinoNames.Count;
 		Debug.Log ("Score: " + score);
 	}
 }
