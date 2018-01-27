@@ -11,12 +11,10 @@ public class NetworkOverride : NetworkManager {
         base.OnServerAddPlayer(conn, playerControllerId);
         if (conn.playerControllers.Count > 0)
         {
-
             Tester();
         }
     }
 
-    [ClientRpc]
     public void Tester()
     {
         //foreach(NetworkClient nc in NetworkClient.allClients[].c)
