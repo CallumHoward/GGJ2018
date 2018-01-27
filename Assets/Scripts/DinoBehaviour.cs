@@ -7,7 +7,7 @@ public class DinoBehaviour : MonoBehaviour {
 
 	public enum State { Idle, Spotted, Chase, Hypnotised, Corralled };
 	public State state = State.Idle;
-	float stateCounter;
+	public float stateCounter;
 	GameObject pen;
     public GameObject goal;
     [Range(0f, 100f)]
@@ -52,6 +52,9 @@ public class DinoBehaviour : MonoBehaviour {
             case State.Idle:
                 Idle();
                 break;
+			case State.Spotted:
+				Spotted ();
+				break;
             case State.Chase:
                 Chase();
                 break;
@@ -119,6 +122,7 @@ public class DinoBehaviour : MonoBehaviour {
 		agent.destination = goal.transform.position;
 		agent.speed = SPOTTED_SPEED;
 		state = State.Spotted;
+		stateCounter = SPOTTED_DURATION;
 		Debug.Log ("Spotted!");
 	}
 
