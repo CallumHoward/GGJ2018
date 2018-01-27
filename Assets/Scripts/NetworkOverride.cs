@@ -14,10 +14,13 @@ public class NetworkOverride : NetworkManager {
             print(NetworkServer.connections.Count);
             print(NetworkServer.connections[NetworkServer.connections.Count - 1].playerControllers[0].gameObject.GetInstanceID());
             print(NetworkServer.connections[NetworkServer.connections.Count - 1].playerControllers[0].gameObject);
+            NetworkServer.connections[NetworkServer.connections.Count - 1].playerControllers[0].gameObject.GetComponent<PlayerController>()._PLAYER = (PLAYER)NetworkServer.connections.Count - 1;
             //print(conn.playerControllers[0].gameObject.GetInstanceID());
             int counter = NetworkServer.connections.Count;
-            for (int nc = 0; nc <= counter; nc++)
+            foreach (PlayerController pc in FindObjectsOfType<PlayerController>())
             {
+                //print(pc.GetInstanceID());
+                //pc.gameObject.GetComponentInChildren<Renderer>().material.color = pc.Test();
                 NetworkServer.connections[NetworkServer.connections.Count - 1].playerControllers[0].gameObject.GetComponentInChildren<Renderer>().material.color = NetworkServer.connections[NetworkServer.connections.Count - 1].playerControllers[0].gameObject.GetComponent<PlayerController>().Test();
             }
             

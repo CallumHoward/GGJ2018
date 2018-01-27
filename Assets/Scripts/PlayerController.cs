@@ -65,7 +65,6 @@ public class PlayerController : NetworkBehaviour
     
     public Variables Variables = new Variables();
     public PlayerAnimations PlayerAnimations = new PlayerAnimations();
-    private NetworkIdentity objNetId;
 
 
 
