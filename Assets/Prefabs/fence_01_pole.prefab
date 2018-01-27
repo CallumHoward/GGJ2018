@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33666266296605850}
   - component: {fileID: 23589093924146196}
   - component: {fileID: 95778120595372682}
+  - component: {fileID: 136624735418322862}
   m_Layer: 0
   m_Name: fence_01_pole
   m_TagString: Untagged
@@ -98,3 +99,16 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!136 &136624735418322862
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1501813618667698}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  m_Radius: 0.01
+  m_Height: 0.11651242
+  m_Direction: 1
+  m_Center: {x: -4.656613e-10, y: 0.00050000474, z: 0}

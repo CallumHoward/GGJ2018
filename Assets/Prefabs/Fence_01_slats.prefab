@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33099821611847222}
   - component: {fileID: 23544736827100052}
   - component: {fileID: 95127972986178154}
+  - component: {fileID: 65738057353980778}
   m_Layer: 0
   m_Name: Fence_01_slats
   m_TagString: Untagged
@@ -81,6 +82,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1188023595814916}
   m_Mesh: {fileID: 4300000, guid: 32a0044d0aae8be449ff2dd959235f26, type: 3}
+--- !u!65 &65738057353980778
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1188023595814916}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.0032508336, y: 0.096262485, z: 0.20935121}
+  m_Center: {x: 0, y: -0.0000000018626451, z: 0.0000000037252903}
 --- !u!95 &95127972986178154
 Animator:
   serializedVersion: 3

@@ -532,9 +532,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcdd94c215dc34270856e3323de25c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCorralled: 0
+  state: 0
   goal: {fileID: 0}
   viewDistance: 40
+  CHASE_SPEED: 12
+  CORRALLED_SPEED: 1.56
+  IDLE_SPEED: 3.05
+  IDLE_WANDER_RADIUS: 5
   playerRaycastCheck: {fileID: 114438743437187638}
 --- !u!114 &114438743437187638
 MonoBehaviour:
