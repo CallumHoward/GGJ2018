@@ -36,7 +36,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4310005579185822}
   - component: {fileID: 33333606791485256}
-  - component: {fileID: 136669836037667302}
   - component: {fileID: 23205129466422388}
   m_Layer: 2
   m_Name: Body
@@ -64,7 +63,7 @@ GameObject:
   - component: {fileID: 114973318993314016}
   m_Layer: 2
   m_Name: Raptor
-  m_TagString: Untagged
+  m_TagString: Raptor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +77,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4463956934202646}
   - component: {fileID: 33476725456067802}
-  - component: {fileID: 136791696053147850}
   - component: {fileID: 23742045646400904}
   m_Layer: 2
   m_Name: Head
@@ -96,7 +94,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4914128915833816}
   - component: {fileID: 33858596437797670}
-  - component: {fileID: 136676612198902584}
   - component: {fileID: 23382103549260832}
   m_Layer: 2
   m_Name: Neck
@@ -114,7 +111,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4427750621574538}
   - component: {fileID: 33812863897043090}
-  - component: {fileID: 136697612964856766}
   - component: {fileID: 23347813877992206}
   m_Layer: 2
   m_Name: Tail
@@ -508,7 +504,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1458228945720182}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -607,58 +603,6 @@ MonoBehaviour:
     i15: 76
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
---- !u!136 &136669836037667302
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1256096298102688}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136676612198902584
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1490763466490358}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136697612964856766
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1567688757179634}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136791696053147850
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1473217407096228}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &195248685967860802
 NavMeshAgent:
   m_ObjectHideFlags: 1
