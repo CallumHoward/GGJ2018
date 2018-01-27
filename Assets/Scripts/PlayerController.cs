@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
@@ -59,12 +61,14 @@ public class PlayerAnimations
 public class PlayerController : NetworkBehaviour
 {
     public PLAYER _PLAYER;
+	#if UNITY_EDITOR
     [MenuItem("Examples/Editor GUILayout Enum Popup usage")]
     void Init()
     {
-        UnityEditor.EditorWindow window = EditorWindow.GetWindow(typeof(PlayerController));
-        window.Show();        
-    }
+        EditorWindow window = EditorWindow.GetWindow(typeof(PlayerController));
+        window.Show();
+	}
+	#endif
 
     public Variables Variables = new Variables();
     public PlayerAnimations PlayerAnimations = new PlayerAnimations();
@@ -231,7 +235,7 @@ public class PlayerController : NetworkBehaviour
         }
 
 		Variables.radarCooldownCounter -= Time.deltaTime;
-		if (Input.GetAxis ("Radar_Player_1") == 1 && Variables.radarCooldownCounter <= 0) {
+		if (Input.GetAxis ("Jump_Player_1") == 1 && Variables.radarCooldownCounter <= 0) {
 			Variables.radarTransmission.GetComponent<RadarController> ().Transmit ();
 			Variables.radarCooldownCounter = Variables.RADAR_COOLDOWN;
 		}
