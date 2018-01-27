@@ -34,7 +34,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4171855509167486}
-  - component: {fileID: 95874552641192844}
+  - component: {fileID: 111183116360244488}
+  - component: {fileID: 114264905242442534}
   m_Layer: 11
   m_Name: Gate_01
   m_TagString: Untagged
@@ -234,7 +235,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1103045991716652}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 236.61, y: 0.3, z: 270.85712}
+  m_LocalPosition: {x: 220.11536, y: 1.4296135, z: 290.8314}
   m_LocalScale: {x: 24.67409, y: 24.67409, z: 24.67409}
   m_Children:
   - {fileID: 4466434332671248}
@@ -783,20 +784,31 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0032508336, y: 0.096262485, z: 0.13334061}
   m_Center: {x: -0.0000009536743, y: 0.07160044, z: -0.07180061}
---- !u!95 &95874552641192844
-Animator:
-  serializedVersion: 3
+--- !u!111 &111183116360244488
+Animation:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1103045991716652}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: d3db957ef34939f4e9d3417eb8eb7bc0, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400002, guid: d3db957ef34939f4e9d3417eb8eb7bc0, type: 3}
+  - {fileID: 7400000, guid: d3db957ef34939f4e9d3417eb8eb7bc0, type: 3}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &114264905242442534
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1103045991716652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d294db25f9f24bc4c826797846b1436a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimationSpeed: 10
