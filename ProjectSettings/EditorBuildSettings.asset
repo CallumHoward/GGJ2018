@@ -5,9 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Main.unity
-    guid: b55fb19ee885f4dd98121f6a063c98fa
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 144c6bbccdcedb7428b91db3c0fd6abc
   - enabled: 1
     path: Assets/Scenes/Corraling.unity
     guid: 7ec0d236224cf824a8aabd0cdcd617a7
