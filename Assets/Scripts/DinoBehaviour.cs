@@ -13,6 +13,7 @@ public class DinoBehaviour : MonoBehaviour {
     [Range(0f, 100f)]
     public float viewDistance = 40f;
     NavMeshAgent agent;
+	public EmoteController emote;
 	public float ANGULAR_SPEED;
 	public float SPOTTED_DURATION;
 	public float CHASE_WITHOUT_SEEING_COUNTER;
@@ -104,6 +105,7 @@ public class DinoBehaviour : MonoBehaviour {
 		state = State.Idle;
 		agent.speed = IDLE_SPEED;
 		stateCounter = 0;
+		emote.Idle ();
 	}
 
 	void Spotted() {
@@ -130,6 +132,8 @@ public class DinoBehaviour : MonoBehaviour {
 		agent.speed = SPOTTED_SPEED;
 		state = State.Spotted;
 		stateCounter = SPOTTED_DURATION;
+		emote.Spotted ();
+
 		Debug.Log ("Spotted!");
 	}
 
@@ -175,6 +179,7 @@ public class DinoBehaviour : MonoBehaviour {
 		agent.speed = HYPNOTISED_SPEED;
 		state = State.Hypnotised;
 		stateCounter = HYPNOSIS_DURATION;
+		emote.Spotted ();
 	}
 
 	void Corralled() {
@@ -219,6 +224,7 @@ public class DinoBehaviour : MonoBehaviour {
 		agent.speed = CORRALLED_SPEED;
 		stateCounter = 0;
 		agent.destination = transform.position;
+		emote.Captured ();
 	}
 
 	bool CanChaseGoal() {
