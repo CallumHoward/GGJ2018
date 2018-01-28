@@ -9,14 +9,20 @@ public class EmoteController : MonoBehaviour {
 	public Camera Camera;
 	float emoteStartTime;
 	public float EMOTE_ANIM_DURATION;
+	bool show;
 
 	// Use this for initialization
 	void Start () {
-		gameObject.SetActive (false);
+		gameObject.transform.localScale = Vector3.zero;
+		show = false;
+		emoteStartTime = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (!show) {
+			return;
+		}
 		if (Camera == null) {
 			Camera = Camera.main;
 		} else {
@@ -54,18 +60,23 @@ public class EmoteController : MonoBehaviour {
 	}
 
 	public void Spotted() {
-		gameObject.SetActive (true);
-		gameObject.GetComponent<Renderer> ().material = SpottedMat;
-		emoteStartTime = Time.time;
+		show = true;
+		if (gameObject.GetComponent<Renderer> ().material != SpottedMat) {
+			gameObject.GetComponent<Renderer> ().material = SpottedMat;
+			emoteStartTime = Time.time;
+		}
 	}
 
 	public void Captured() {
-		gameObject.SetActive (true);
-		gameObject.GetComponent<Renderer> ().material = CapturedMat;
-		emoteStartTime = Time.time;
+		show = true;
+		if (gameObject.GetComponent<Renderer> ().material != CapturedMat) {
+			gameObject.GetComponent<Renderer> ().material = CapturedMat;
+			emoteStartTime = Time.time;
+		}
 	}
 
 	public void Idle() {
-		gameObject.SetActive (false);
+		show = false;
+		gameObject.transform.localScale = Vector3.zero;
 	}
 }
