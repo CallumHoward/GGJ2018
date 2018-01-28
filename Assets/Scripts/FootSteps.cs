@@ -20,12 +20,16 @@ public class FootSteps : MonoBehaviour {
         if (other.tag == "Terrain" && !Big)
         {
             audioSource.clip = footSteps[Random.Range(8, 15)];
-            audioSource.Play();
+            audioSource.PlayOneShot(footSteps[Random.Range(8, 15)]);
+            print("Playing Sound");
+
         }
         else if (other.tag == "Terrain" && Big)
         {
             audioSource.clip = footSteps[Random.Range(0, 7)];
-            audioSource.Play();
+            audioSource.PlayOneShot(footSteps[Random.Range(0, 7)]);
+            print("Playing Sound");
+
         }
     }
 
