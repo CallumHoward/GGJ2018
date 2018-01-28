@@ -10,6 +10,7 @@ public class EmoteController : MonoBehaviour {
 	float emoteStartTime;
 	public float EMOTE_ANIM_DURATION;
 	bool show;
+	string emote;
 
 	// Use this for initialization
 	void Start () {
@@ -61,7 +62,8 @@ public class EmoteController : MonoBehaviour {
 
 	public void Spotted() {
 		show = true;
-		if (gameObject.GetComponent<Renderer> ().material != SpottedMat) {
+		if (emote != "spotted") {
+			emote = "spotted";
 			gameObject.GetComponent<Renderer> ().material = SpottedMat;
 			emoteStartTime = Time.time;
 		}
@@ -69,7 +71,8 @@ public class EmoteController : MonoBehaviour {
 
 	public void Captured() {
 		show = true;
-		if (gameObject.GetComponent<Renderer> ().material != CapturedMat) {
+		if (emote != "captured") {
+			emote = "captured";
 			gameObject.GetComponent<Renderer> ().material = CapturedMat;
 			emoteStartTime = Time.time;
 		}
