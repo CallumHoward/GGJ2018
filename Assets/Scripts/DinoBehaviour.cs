@@ -42,6 +42,7 @@ public class DinoBehaviour : MonoBehaviour {
 	public AudioClip[] attackSounds;
 	public AudioClip chargeSound;
 	public AudioClip[] growlSounds;
+	public musicplayer mus;
 
     public PlayerRaycastCheck playerRaycastCheck;
 
@@ -56,7 +57,8 @@ public class DinoBehaviour : MonoBehaviour {
     void Update() {
         if (goal == null) {
             goal = GameObject.Find("PlayerController(Clone)");
-        }
+		}
+		mus.RemoveDino (gameObject.name);
         agent.angularSpeed = ANGULAR_SPEED;
 		agent.acceleration = ACCELERATION;
         switch (state) {
@@ -179,6 +181,7 @@ public class DinoBehaviour : MonoBehaviour {
 		} else {
 			OnIdle ();
 		}
+		mus.AddDino(gameObject.name);
 	}
 
 	void OnChase() {
@@ -256,12 +259,10 @@ public class DinoBehaviour : MonoBehaviour {
 				GetComponent<AudioSource> ().PlayOneShot (attackSounds [Random.Range (0, attackSounds.Length - 1)]);
 			}
 		}
-    }
-
-	void OnTriggerStay(Collider c) {
 		if (c.tag == "Radar" && state != State.Corralled) {
 			Debug.Log ("Hypnotised");
 			OnHypnotised (c.gameObject);
 		}
-	}
+    }
+
 }
