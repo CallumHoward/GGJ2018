@@ -46,14 +46,18 @@ public class Variables
 
 }
 
+[System.Serializable]
 public class PlayerAnimations
 {
 
-    //public Animation anim;
-    //public AnimationClip runAnim;
-    //public AnimationClip crouchAnim;
-    //public AnimationClip crouchIdleAnim;
-    //public AnimationClip breathingAnim;
+    [Header("Animation")]
+    public Animation anim;
+    public AnimationClip idleAnim;
+    public AnimationClip walkAnim;
+    public AnimationClip attackAnim;
+    public AnimationClip dieAnim;
+    public AnimationClip jumpAnim;
+    public AnimationClip runAnim;
 
 }
 
@@ -135,11 +139,11 @@ public class PlayerController : NetworkBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        for (int i = 0; i < NetworkOverride.playerCount - 1; i++)
+        /*for (int i = 0; i < NetworkOverride.playerCount - 1; i++)
         {
             NetworkServer.connections[i].playerControllers[0].gameObject.GetComponent<PlayerController>()._PLAYER = (PLAYER)i;
             NetworkServer.connections[i].playerControllers[0].gameObject.GetComponentInChildren<Renderer>().material.color = Test(NetworkServer.connections[i].playerControllers[0].gameObject.GetComponent<PlayerController>()._PLAYER);
-        }
+        }*/
 
         float colliderHeightTemp = Variables.colliderHeight / 2f;
 
@@ -147,19 +151,7 @@ public class PlayerController : NetworkBehaviour
         {
             return;
         }
-        if (Input.GetAxis("Crouch_Player_1") == 1)
-        {
-            Variables.forwardSpeed = 3f;
-            GetComponent<CapsuleCollider>().center = new Vector3(0f, -0.5f, 0f);
-            GetComponent<CapsuleCollider>().height = colliderHeightTemp;
-        }
-        else
-        {
-            Variables.forwardSpeed = 8f;
-            GetComponent<CapsuleCollider>().center = new Vector3(0, Variables.colliderPos, 0);
-            GetComponent<CapsuleCollider>().height = Variables.colliderHeight;
 
-        }
 		Vector3 Direction = new Vector3(Input.GetAxisRaw("Horizontal_Player_1"), 0f, Input.GetAxisRaw("Vertical_Player_1")).normalized;
         Direction = Variables.rotationReference.transform.TransformDirection(Direction);
         Direction.y = 0f;
@@ -170,14 +162,14 @@ public class PlayerController : NetworkBehaviour
             {
                 Variables.grounded = false;
                 Variables.player.velocity = (new Vector3(0f, Input.GetAxis("Jump_Player_1") * Variables.jumpForce, 0f));
-
+                PlayerAnimations.anim.clip = PlayerAnimations.jumpAnim;
+                PlayerAnimations.anim.CrossFade(PlayerAnimations.jumpAnim.name, 0.2F, PlayMode.StopAll);
             }
         }
 
         if (Input.GetAxis("Sprint_Player_1") == 1f)
         {
             Variables.player.position = (transform.position + Direction * Time.deltaTime * Variables.sprintSpeed);
-
         }
         else
         {
@@ -186,24 +178,25 @@ public class PlayerController : NetworkBehaviour
 
         if (Input.GetAxisRaw("Horizontal_Player_1") != 0f || Input.GetAxisRaw("Vertical_Player_1") != 0f)
         {
-            //if (Input.GetAxis("Crouch") == 1)
-            //{
-            //    Variables.anim.clip = Variables.crouchAnim;
-            //    Variables.anim["CrouchWalk"].speed = 3;
-            //    if (!Variables.anim.IsPlaying(Variables.crouchAnim.name))
-            //    {
-            //        Variables.anim.CrossFade(Variables.crouchAnim.name, 0.2F, PlayMode.StopAll);
-            //    }
-            //}
-            //else
-            //{
-            //    Variables.anim.clip = Variables.runAnim;
-            //    if (!Variables.anim.IsPlaying(Variables.runAnim.name))
-            //    {
-            //        Variables.anim.CrossFade(Variables.runAnim.name, 0.2F, PlayMode.StopAll);
-            //    }
-            //
-            //}
+            if (Input.GetAxis("Sprint_Player_1") == 1f)
+            {
+                PlayerAnimations.anim["Run"].speed =  1.5f;
+                PlayerAnimations.anim.clip = PlayerAnimations.runAnim;
+                if (!PlayerAnimations.anim.IsPlaying(PlayerAnimations.runAnim.name))
+                {
+                    PlayerAnimations.anim.CrossFade(PlayerAnimations.runAnim.name, 0.2F, PlayMode.StopAll);
+                }
+            }
+            else
+            {
+                PlayerAnimations.anim["Walk"].speed = 1.5f;
+                PlayerAnimations.anim.clip = PlayerAnimations.walkAnim;
+                if (!PlayerAnimations.anim.IsPlaying(PlayerAnimations.walkAnim.name))
+                {
+                    PlayerAnimations.anim.CrossFade(PlayerAnimations.walkAnim.name, 0.2F, PlayMode.StopAll);
+                }
+            }
+
             Vector3 Movement = new Vector3(Input.GetAxisRaw("Horizontal_Player_1"), 0f, Input.GetAxisRaw("Vertical_Player_1"));
             Movement = Camera.main.transform.TransformDirection(Movement);
             Movement.y = 0f;
@@ -212,24 +205,14 @@ public class PlayerController : NetworkBehaviour
         }
         else
         {
-            if (Input.GetAxis("Crouch_Player_1") == 1)
+
+            PlayerAnimations.anim.clip = PlayerAnimations.idleAnim;
+            if (!PlayerAnimations.anim.IsPlaying(PlayerAnimations.idleAnim.name))
             {
-                //Variables.anim.clip = Variables.crouchIdleAnim;
-                //if (!Variables.anim.IsPlaying(Variables.crouchIdleAnim.name))
-                //{
-                //    Variables.anim.CrossFade(Variables.crouchIdleAnim.name, 0.2F, PlayMode.StopAll);
-                //}
-                Variables.childModel.transform.eulerAngles = Variables.currentRotation;
+                PlayerAnimations.anim.CrossFade(PlayerAnimations.idleAnim.name, 0.2F, PlayMode.StopAll);
             }
-            else
-            {
-                //Variables.anim.clip = Variables.breathingAnim;
-                //if (!Variables.anim.IsPlaying(Variables.breathingAnim.name))
-                //{
-                //    Variables.anim.CrossFade(Variables.breathingAnim.name, 0.2F, PlayMode.StopAll);
-                //}
-                Variables.childModel.transform.eulerAngles = Variables.currentRotation;
-            }
+            Variables.childModel.transform.eulerAngles = Variables.currentRotation;
+            
 
         }
 		Variables.radarCooldownCounter -= Time.deltaTime;
