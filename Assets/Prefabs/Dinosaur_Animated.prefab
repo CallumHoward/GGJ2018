@@ -962,9 +962,11 @@ MonoBehaviour:
   viewDistance: 40
   emote: {fileID: 114509149134744788}
   ANGULAR_SPEED: 120
+  ACCELERATION: 50
   SPOTTED_DURATION: 1.5
   CHASE_WITHOUT_SEEING_COUNTER: 2.5
   CHASE_SPEED: 12
+  CHASE_ACCELERATION: 10
   SPOTTED_SPEED: 0.5
   SPOTTED_ANGULAR_SPEED: 100000
   CORRALLED_SPEED: 3
@@ -1060,6 +1062,7 @@ MonoBehaviour:
   SpottedMat: {fileID: 2100000, guid: db1a271a89a0c8f4db2852aabca4afe5, type: 2}
   CapturedMat: {fileID: 2100000, guid: 4e17b080a43ac384ba2a2b126ec559a9, type: 2}
   Camera: {fileID: 0}
+  EMOTE_ANIM_DURATION: 1
 --- !u!137 &137675621364113732
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
