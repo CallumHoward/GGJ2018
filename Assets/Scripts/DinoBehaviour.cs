@@ -89,7 +89,7 @@ public class DinoBehaviour : MonoBehaviour {
                 anim.CrossFade(runAnim.name, 0.2F, PlayMode.StopAll);
             }
         }
-        if (state == State.Idle)
+        if (state == State.Idle || state == State.Hypnotised)
         {
             if (Vector3.Distance(agent.destination, transform.position) >= 0.2f)
             {
