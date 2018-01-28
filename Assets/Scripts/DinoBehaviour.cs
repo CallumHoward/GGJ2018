@@ -70,7 +70,6 @@ public class DinoBehaviour : MonoBehaviour {
                 Corralled();
                 break;
         }
-<<<<<<< HEAD
         print(agent.pathStatus);
         if (Vector3.Distance(agent.destination, transform.position) > 0.2f && agent.speed <= 8f)
         {
@@ -98,9 +97,6 @@ public class DinoBehaviour : MonoBehaviour {
                 anim.CrossFade(idleAnim.name, 0.2F, PlayMode.StopAll);
             }
         }
-=======
->>>>>>> bcf5753cec1d1bcaf52987c8f6949b5822188bd7
-        
     }
 
 	void Idle() {
