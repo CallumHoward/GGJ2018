@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23774282765268000}
   - component: {fileID: 114862052323305404}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: RadarTransmission
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
