@@ -1,4 +1,4 @@
-﻿Shader "Toon/Transparent Outline" {
+﻿Shader "Toon/BasicTransparent Outline" {
 	Properties {
 		_Color ("Main Color", Color) = (.5,.5,.5,1)
 		_OutlineColor ("Outline Color", Color) = (0,0,0,1)
@@ -43,7 +43,7 @@
 	ENDCG
 
 	SubShader {
-		Tags { "RenderType"="Opaque" }
+		Tags { "QUEUE"="AlphaTest" "RenderType"="TransparentCutout" }
 		UsePass "Toon/Basic/BASE"
 		Pass {
 			Name "OUTLINE"

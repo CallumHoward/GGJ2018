@@ -240,6 +240,7 @@ public class PlayerController : NetworkBehaviour
 				obj.GetComponent<RadarController> ().SetDelay (delay);
 				obj.transform.parent = transform;
 			}
+			GetComponent<AudioSource> ().Play ();
 			Variables.radarCooldownCounter = Variables.RADAR_COOLDOWN;
 		}
     }

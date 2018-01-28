@@ -11,6 +11,8 @@ public class EmoteController : MonoBehaviour {
 	public float EMOTE_ANIM_DURATION;
 	bool show;
 	string emote;
+	public AudioClip alertAudio;
+	public AudioClip captureAudio;
 
 	// Use this for initialization
 	void Start () {
@@ -66,6 +68,7 @@ public class EmoteController : MonoBehaviour {
 			emote = "spotted";
 			gameObject.GetComponent<Renderer> ().material = SpottedMat;
 			emoteStartTime = Time.time;
+			GetComponent<AudioSource> ().PlayOneShot (alertAudio);
 		}
 	}
 
@@ -75,6 +78,7 @@ public class EmoteController : MonoBehaviour {
 			emote = "captured";
 			gameObject.GetComponent<Renderer> ().material = CapturedMat;
 			emoteStartTime = Time.time;
+			GetComponent<AudioSource> ().PlayOneShot (captureAudio);
 		}
 	}
 
