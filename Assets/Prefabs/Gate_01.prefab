@@ -36,6 +36,7 @@ GameObject:
   - component: {fileID: 4171855509167486}
   - component: {fileID: 111183116360244488}
   - component: {fileID: 114264905242442534}
+  - component: {fileID: 82955068941235698}
   m_Layer: 11
   m_Name: Gate_01
   m_TagString: Untagged
@@ -824,6 +825,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0032508336, y: 0.096262485, z: 0.13334061}
   m_Center: {x: -0.0000009536743, y: 0.07160044, z: -0.07180061}
+--- !u!82 &82955068941235698
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1103045991716652}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 1
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!111 &111183116360244488
 Animation:
   m_ObjectHideFlags: 1
@@ -853,6 +934,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AnimationSpeed: 10
   OPEN_DURATION: 1
+  closeSound: {fileID: 8300000, guid: fd48058d52f862643abf3e0ef8096332, type: 3}
+  openSound: {fileID: 8300000, guid: 1e33af0be56921441b7e0f30707ba805, type: 3}
 --- !u!114 &114869120031938294
 MonoBehaviour:
   m_ObjectHideFlags: 1
