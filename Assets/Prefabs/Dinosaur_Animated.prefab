@@ -1312,6 +1312,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 58e21f2b483e99d4ebe7c05cdaf09e1f, type: 3}
   - {fileID: 8300000, guid: 6f11ae6d9725f4846972500ce7cd9f28, type: 3}
   - {fileID: 8300000, guid: 8b37f2674a5a54c40808699a290cbbf1, type: 3}
+  chargeSound: {fileID: 8300000, guid: 2e4b4571e23608c48aec21b5855134f7, type: 3}
   playerRaycastCheck: {fileID: 114463486701348894}
 --- !u!114 &114004623745997990
 MonoBehaviour:

@@ -39,6 +39,7 @@ public class DinoBehaviour : MonoBehaviour {
 
 	[Header("Audio")]
 	public AudioClip[] attackSounds;
+	public AudioClip chargeSound;
 
     public PlayerRaycastCheck playerRaycastCheck;
 
@@ -178,6 +179,7 @@ public class DinoBehaviour : MonoBehaviour {
 		state = State.Chase;
 		agent.speed = CHASE_SPEED;
 		stateCounter = CHASE_WITHOUT_SEEING_COUNTER;
+		GetComponent<AudioSource> ().PlayOneShot (chargeSound);
 	}
 
 	void Hypnotised() {
