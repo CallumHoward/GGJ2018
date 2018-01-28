@@ -7,6 +7,12 @@ public class MenuScript : MonoBehaviour {
     public void Quit()
     {
 
+        StartCoroutine(wait());
+    }
+
+    IEnumerator wait() {
+        yield return new WaitForSeconds(1);
+
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
