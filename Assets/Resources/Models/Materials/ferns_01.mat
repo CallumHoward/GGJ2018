@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: ferns_01
-  m_Shader: {fileID: 4800000, guid: 4035af9139824ee468eb7196ae3064bf, type: 3}
+  m_Shader: {fileID: 10511, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: GEOM_TYPE_LEAF _ALPHABLEND_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
