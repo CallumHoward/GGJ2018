@@ -13,6 +13,7 @@ public class DinoBehaviour : MonoBehaviour {
     [Range(0f, 100f)]
     public float viewDistance = 40f;
     NavMeshAgent agent;
+	public EmoteController emote;
 	public float ANGULAR_SPEED;
 	public float SPOTTED_DURATION;
 	public float CHASE_WITHOUT_SEEING_COUNTER;
@@ -66,6 +67,7 @@ public class DinoBehaviour : MonoBehaviour {
                 Corralled();
                 break;
         }
+<<<<<<< HEAD
         print(agent.pathStatus);
         if (Vector3.Distance(agent.destination, transform.position) > 0.2f && agent.speed <= 8f)
         {
@@ -93,6 +95,8 @@ public class DinoBehaviour : MonoBehaviour {
                 anim.CrossFade(idleAnim.name, 0.2F, PlayMode.StopAll);
             }
         }
+=======
+>>>>>>> bcf5753cec1d1bcaf52987c8f6949b5822188bd7
         
     }
 
@@ -108,6 +112,23 @@ public class DinoBehaviour : MonoBehaviour {
 				agent.destination = transform.position + wanderTo3;
 				stateCounter += Random.Range (3f, 9f);
 			}
+
+			if (Vector3.Distance(agent.destination, transform.position) > 0.2f)
+			{
+				anim.clip = walkAnim;
+				if (!anim.IsPlaying(walkAnim.name))
+				{
+					anim.CrossFade(walkAnim.name, 0.2F, PlayMode.StopAll);
+				}
+			}
+			else
+			{
+				anim.clip = idleAnim;
+				if (!anim.IsPlaying(idleAnim.name))
+				{
+					anim.CrossFade(idleAnim.name, 0.2F, PlayMode.StopAll);
+				}
+			}
 		}
 	}
 
@@ -115,6 +136,7 @@ public class DinoBehaviour : MonoBehaviour {
 		state = State.Idle;
 		agent.speed = IDLE_SPEED;
 		stateCounter = 0;
+		emote.Idle ();
 	}
 
 	void Spotted() {
@@ -124,6 +146,13 @@ public class DinoBehaviour : MonoBehaviour {
 		}
 		agent.angularSpeed = SPOTTED_ANGULAR_SPEED;
 		stateCounter -= Time.deltaTime;
+
+		anim.clip = spottedAnim;
+		if (!anim.IsPlaying(spottedAnim.name))
+		{
+			anim.CrossFade(spottedAnim.name, 0.1F, PlayMode.StopAll);
+		}
+
 		if (stateCounter <= 0) {
 			OnChase ();
 		}
@@ -134,11 +163,19 @@ public class DinoBehaviour : MonoBehaviour {
 		agent.speed = SPOTTED_SPEED;
 		state = State.Spotted;
 		stateCounter = SPOTTED_DURATION;
+		emote.Spotted ();
+
 		Debug.Log ("Spotted!");
 	}
 
 	void Chase() {
 		stateCounter -= Time.deltaTime;
+		// TODO: run/chase anim
+		anim.clip = walkAnim;
+		if (!anim.IsPlaying(walkAnim.name))
+		{
+			anim.CrossFade(walkAnim.name, 0.1F, PlayMode.StopAll);
+		}
 		if (goal != null && (stateCounter > 0 || CanChaseGoal())) {
 			agent.destination = goal.transform.position;
 		} else {
@@ -159,6 +196,12 @@ public class DinoBehaviour : MonoBehaviour {
 		} else {
 			stateCounter -= Time.deltaTime;
 			agent.destination = goal.transform.position;
+			// TODO: run/chase anim
+			anim.clip = walkAnim;
+			if (!anim.IsPlaying(walkAnim.name))
+			{
+				anim.CrossFade(walkAnim.name, 0.1F, PlayMode.StopAll);
+			}
 		}
 	}
 
@@ -167,6 +210,7 @@ public class DinoBehaviour : MonoBehaviour {
 		agent.speed = HYPNOTISED_SPEED;
 		state = State.Hypnotised;
 		stateCounter = HYPNOSIS_DURATION;
+		emote.Spotted ();
 	}
 
 	void Corralled() {
@@ -183,8 +227,26 @@ public class DinoBehaviour : MonoBehaviour {
 				pen.transform.position.x + Random.Range (-dx, dx),
 				pen.transform.position.y,
 				pen.transform.position.z + Random.Range (-dz, dz));
-			agent.destination = newVec;
+			Vector3 dv = newVec - transform.position;
+			dv = Vector3.ClampMagnitude (dv, 3);
+			agent.destination = transform.position + dv;
 			stateCounter += Random.Range (0.5f, 3f);
+		}
+		if (Vector3.Distance(agent.destination, transform.position) > 0.2f)
+		{
+			anim.clip = walkAnim;
+			if (!anim.IsPlaying(walkAnim.name))
+			{
+				anim.CrossFade(walkAnim.name, 0.2F, PlayMode.StopAll);
+			}
+		}
+		else
+		{
+			anim.clip = jumpAnim;
+			if (!anim.IsPlaying(jumpAnim.name))
+			{
+				anim.CrossFade(jumpAnim.name, 0.2F, PlayMode.StopAll);
+			}
 		}
 	}
 
@@ -192,6 +254,8 @@ public class DinoBehaviour : MonoBehaviour {
 		state = State.Corralled;
 		agent.speed = CORRALLED_SPEED;
 		stateCounter = 0;
+		agent.destination = transform.position;
+		emote.Captured ();
 	}
 
 	bool CanChaseGoal() {
