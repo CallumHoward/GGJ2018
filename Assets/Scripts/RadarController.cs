@@ -13,7 +13,10 @@ public class RadarController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		transmitCounter = 0;
-		timeStart = Time.time;
+	}
+
+	public void SetDelay(float delay) {
+		timeStart = Time.time + delay;
 	}
 	
 	// Update is called once per frame
@@ -24,6 +27,6 @@ public class RadarController : MonoBehaviour {
 			Destroy (gameObject);
 			return;
 		}
-		gameObject.transform.localScale = Vector3.Slerp (Vector3.one, Vector3.one * SCALE_MAX, value);
+		gameObject.transform.localScale = Vector3.Slerp (Vector3.zero, Vector3.one * SCALE_MAX, value);
 	}
 }
