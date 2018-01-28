@@ -72,6 +72,8 @@ GameObject:
   - component: {fileID: 195889171217149314}
   - component: {fileID: 114002438511906820}
   - component: {fileID: 82461574578599960}
+  - component: {fileID: 114978126975594264}
+  - component: {fileID: 114959953387120396}
   m_Layer: 2
   m_Name: Dinosaur_Animated
   m_TagString: Raptor
@@ -1286,6 +1288,7 @@ MonoBehaviour:
   state: 0
   stateCounter: 0
   growlCounter: 0
+  goals: []
   goal: {fileID: 0}
   viewDistance: 40
   emote: {fileID: 114507081173897364}
@@ -1321,6 +1324,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6106f420cf6b67041b41e2c3fc98cdf4, type: 3}
   mus: {fileID: 114996188268022802, guid: 5a83f387d5cba9e49a2cdadf9c0015a4, type: 2}
   playerRaycastCheck: {fileID: 114463486701348894}
+  shortest: Infinity
 --- !u!114 &114004623745997990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1336,7 +1340,7 @@ MonoBehaviour:
   m_SendInterval: 0.033333335
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
-  m_SyncSpin: 0
+  m_SyncSpin: 1
   m_MovementTheshold: 0.001
   m_VelocityThreshold: 0.0001
   m_SnapThreshold: 5
@@ -1465,6 +1469,44 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9eec416b09a4ad64ba2591088836e8e7, type: 3}
   Big: 0
   Grass: 1
+--- !u!114 &114959953387120396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1189724185137240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1267208747, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 4883334228524268}
+  m_ChildIndex: 1
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_MovementThreshold: 0.001
+  m_InterpolateRotation: 0.5
+  m_InterpolateMovement: 0.5
+--- !u!114 &114978126975594264
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1189724185137240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1267208747, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 4979231736604716}
+  m_ChildIndex: 0
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_MovementThreshold: 0.001
+  m_InterpolateRotation: 0.5
+  m_InterpolateMovement: 0.5
 --- !u!137 &137675621364113732
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

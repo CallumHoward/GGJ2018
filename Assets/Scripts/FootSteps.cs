@@ -13,22 +13,24 @@ public class FootSteps : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        audioSource = GetComponent<AudioSource>();
 	}
     private void OnTriggerEnter(Collider other)
-    {
+	{
+		audioSource = GetComponent<AudioSource>();
+		if (audioSource == null) {
+			return;
+		}
         if (other.tag == "Terrain" && !Big)
         {
-			audioSource.PlayOneShot(footSteps[Random.Range(8, 15)]);
-            //audioSource.Play();
+			audioSource.clip = footSteps[Random.Range(8, 15)];
+            audioSource.Play();
             print("Playing Sound");
 
         }
         else if (other.tag == "Terrain" && Big)
         {
-            /*audioSource.clip = footSteps[Random.Range(0, 7)];
-            audioSource.Play();*/
-			audioSource.PlayOneShot(footSteps[Random.Range(0, 7)]);
+            audioSource.clip = footSteps[Random.Range(0, 7)];
+			audioSource.Play();
             print("Playing Sound");
 
         }
