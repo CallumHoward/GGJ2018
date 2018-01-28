@@ -32,6 +32,7 @@ public class DinoBehaviour : MonoBehaviour {
     public AnimationClip attackAnim;
     public AnimationClip spottedAnim;
     public AnimationClip jumpAnim;
+    public AnimationClip runAnim;
 
     public PlayerRaycastCheck playerRaycastCheck;
 
@@ -65,13 +66,23 @@ public class DinoBehaviour : MonoBehaviour {
                 Corralled();
                 break;
         }
-        
-        if (Vector3.Distance(agent.destination, transform.position) > 0.2f)
+        print(agent.pathStatus);
+        if (Vector3.Distance(agent.destination, transform.position) > 0.2f && agent.speed <= 8f)
         {
+            anim["Walk"].speed = agent.speed * 0.5f;
             anim.clip = walkAnim;
             if (!anim.IsPlaying(walkAnim.name))
             {
                 anim.CrossFade(walkAnim.name, 0.2F, PlayMode.StopAll);
+            }
+        }
+        else if (Vector3.Distance(agent.destination, transform.position) > 0.2f && agent.speed > 8f)
+        {
+            anim["Run"].speed = agent.speed * 0.1875f;
+            anim.clip = runAnim;
+            if (!anim.IsPlaying(runAnim.name))
+            {
+                anim.CrossFade(runAnim.name, 0.2F, PlayMode.StopAll);
             }
         }
         else

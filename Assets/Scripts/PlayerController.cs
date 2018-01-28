@@ -135,7 +135,6 @@ public class PlayerController : NetworkBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        print(NetworkOverride.playerCount - 1);
         for (int i = 0; i < NetworkOverride.playerCount - 1; i++)
         {
             NetworkServer.connections[i].playerControllers[0].gameObject.GetComponent<PlayerController>()._PLAYER = (PLAYER)i;
