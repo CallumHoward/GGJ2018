@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 114127501297872638}
   - component: {fileID: 195889171217149314}
   - component: {fileID: 114002438511906820}
+  - component: {fileID: 82461574578599960}
   m_Layer: 2
   m_Name: Dinosaur_Animated
   m_TagString: Raptor
@@ -243,6 +244,7 @@ GameObject:
   - component: {fileID: 33692183090260554}
   - component: {fileID: 23079222368703430}
   - component: {fileID: 114507081173897364}
+  - component: {fileID: 82557599924956780}
   m_Layer: 0
   m_Name: Emote
   m_TagString: Untagged
@@ -456,7 +458,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1189724185137240}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 204.66487, y: -0.18, z: 273.61}
+  m_LocalPosition: {x: 218.93095, y: 0, z: 264.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4979231736604716}
@@ -1010,6 +1012,166 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!82 &82461574578599960
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1189724185137240}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 1
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &82557599924956780
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1505448442282552}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 1
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!82 &82916184300608680
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1123,6 +1285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   stateCounter: 0
+  growlCounter: 0
   goal: {fileID: 0}
   viewDistance: 40
   emote: {fileID: 114507081173897364}
@@ -1146,6 +1309,16 @@ MonoBehaviour:
   spottedAnim: {fileID: 7400006, guid: b247ce71c3591da46827c5cdcbb40160, type: 3}
   jumpAnim: {fileID: 7400008, guid: b247ce71c3591da46827c5cdcbb40160, type: 3}
   runAnim: {fileID: 7400010, guid: b247ce71c3591da46827c5cdcbb40160, type: 3}
+  attackSounds:
+  - {fileID: 8300000, guid: 58e21f2b483e99d4ebe7c05cdaf09e1f, type: 3}
+  - {fileID: 8300000, guid: 6f11ae6d9725f4846972500ce7cd9f28, type: 3}
+  - {fileID: 8300000, guid: 8b37f2674a5a54c40808699a290cbbf1, type: 3}
+  chargeSound: {fileID: 8300000, guid: 2e4b4571e23608c48aec21b5855134f7, type: 3}
+  growlSounds:
+  - {fileID: 8300000, guid: 0d0d485422c4cd54b8a044fc9613b177, type: 3}
+  - {fileID: 8300000, guid: 9434c3c3196f87f4b90d61100d04482f, type: 3}
+  - {fileID: 8300000, guid: 811bb767f58680e41982ccad1a322a7f, type: 3}
+  - {fileID: 8300000, guid: 6106f420cf6b67041b41e2c3fc98cdf4, type: 3}
   playerRaycastCheck: {fileID: 114463486701348894}
 --- !u!114 &114004623745997990
 MonoBehaviour:
@@ -1229,6 +1402,8 @@ MonoBehaviour:
   CapturedMat: {fileID: 2100000, guid: 7fb39b31c8e7f844fa5799178b0ecd91, type: 2}
   Camera: {fileID: 0}
   EMOTE_ANIM_DURATION: 1
+  alertAudio: {fileID: 8300000, guid: fbb94d2d3f9a4d642a977024805c03db, type: 3}
+  captureAudio: {fileID: 8300000, guid: 446dc3fda89ebf540b42d7c5dad7ee7d, type: 3}
 --- !u!114 &114529096019163932
 MonoBehaviour:
   m_ObjectHideFlags: 1

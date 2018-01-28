@@ -217,12 +217,13 @@ public class PlayerController : NetworkBehaviour
         }
 		Variables.radarCooldownCounter -= Time.deltaTime;
 		if (Input.GetAxis ("Jump_Player_1") == 1 && Variables.radarCooldownCounter <= 0) {
-			float[] delays = { 0, 0.1f, 0.2f, 0.6f, 0.7f, 0.8f };
+			float[] delays = { 0, 0.1f, 0.2f };
 			foreach (float delay in delays) {
 				GameObject obj = Instantiate (Variables.radarTransmission, gameObject.transform.position, Quaternion.identity);
 				obj.GetComponent<RadarController> ().SetDelay (delay);
 				obj.transform.parent = transform;
 			}
+			GetComponent<AudioSource> ().Play ();
 			Variables.radarCooldownCounter = Variables.RADAR_COOLDOWN;
 		}
     }

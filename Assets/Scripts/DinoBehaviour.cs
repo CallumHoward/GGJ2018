@@ -8,6 +8,7 @@ public class DinoBehaviour : MonoBehaviour {
 	public enum State { Idle, Spotted, Chase, Hypnotised, Corralled };
 	public State state = State.Idle;
 	public float stateCounter;
+	public float growlCounter;
 	GameObject pen;
     public GameObject goal;
     [Range(0f, 100f)]
@@ -36,6 +37,11 @@ public class DinoBehaviour : MonoBehaviour {
     public AnimationClip spottedAnim;
     public AnimationClip jumpAnim;
     public AnimationClip runAnim;
+
+	[Header("Audio")]
+	public AudioClip[] attackSounds;
+	public AudioClip chargeSound;
+	public AudioClip[] growlSounds;
 
     public PlayerRaycastCheck playerRaycastCheck;
 
@@ -161,6 +167,11 @@ public class DinoBehaviour : MonoBehaviour {
 	void Chase() {
 		stateCounter -= Time.deltaTime;
 		// TODO: run/chase anim
+		growlCounter -= Time.deltaTime;
+		if (growlCounter <= 0) {
+			GetComponent<AudioSource> ().PlayOneShot (growlSounds[Random.Range(0, growlSounds.Length-1)]);
+			growlCounter = Random.Range (5f, 10f);
+		}
 		
 		agent.acceleration = CHASE_ACCELERATION;
 		if (goal != null && (stateCounter > 0 || CanChaseGoal())) {
@@ -175,6 +186,8 @@ public class DinoBehaviour : MonoBehaviour {
 		state = State.Chase;
 		agent.speed = CHASE_SPEED;
 		stateCounter = CHASE_WITHOUT_SEEING_COUNTER;
+		GetComponent<AudioSource> ().PlayOneShot (chargeSound);
+		growlCounter = 3f;
 	}
 
 	void Hypnotised() {
@@ -240,6 +253,7 @@ public class DinoBehaviour : MonoBehaviour {
 			PlayerController pc = c.GetComponent<PlayerController> ();
 			if (pc != null) {
 				pc.DinoEat (this);
+				GetComponent<AudioSource> ().PlayOneShot (attackSounds [Random.Range (0, attackSounds.Length - 1)]);
 			}
 		}
     }

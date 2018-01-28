@@ -9,6 +9,8 @@ public class GateController : MonoBehaviour {
 	float openCounter;
 	public float OPEN_DURATION;
 	bool open;
+	public AudioClip closeSound;
+	public AudioClip openSound;
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +34,7 @@ public class GateController : MonoBehaviour {
 		}
 		PlayAnimation ("LatchOpen", false);
 		PlayAnimation ("GateOpen", false);
+		GetComponent<AudioSource> ().PlayOneShot (openSound);
 		open = true;
 	}
 
@@ -41,6 +44,7 @@ public class GateController : MonoBehaviour {
 		}
 		PlayAnimation ("LatchOpen", true);
 		PlayAnimation ("GateOpen", true);
+		GetComponent<AudioSource> ().PlayOneShot (closeSound);
 		open = false;
 	}
 

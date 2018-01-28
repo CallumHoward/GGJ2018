@@ -493,6 +493,10 @@ Prefab:
       propertyPath: terrain
       value: 
       objectReference: {fileID: 1099184368}
+    - target: {fileID: 1943650161707638, guid: a61635723c6365d44b4893d9c4085600, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a61635723c6365d44b4893d9c4085600, type: 2}
   m_IsPrefabParent: 0
