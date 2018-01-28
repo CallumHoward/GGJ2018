@@ -70,8 +70,13 @@ public class DinoBehaviour : MonoBehaviour {
                 Corralled();
                 break;
         }
+<<<<<<< HEAD
         
         if (state == State.Corralled)
+=======
+        print(agent.pathStatus);
+        if (Vector3.Distance(agent.destination, transform.position) > 0.2f && agent.speed <= 8f)
+>>>>>>> 3288d4ca6f2194017571c4858201400effd49833
         {
             anim["Walk"].speed = agent.speed * 0.5f;
             anim.clip = walkAnim;
@@ -110,7 +115,10 @@ public class DinoBehaviour : MonoBehaviour {
             }
             
         }
+<<<<<<< HEAD
         
+=======
+>>>>>>> 3288d4ca6f2194017571c4858201400effd49833
     }
 
 	void Idle() {

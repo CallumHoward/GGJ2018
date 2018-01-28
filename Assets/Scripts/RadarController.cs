@@ -6,22 +6,24 @@ public class RadarController : MonoBehaviour {
 
 	public float TRANSMIT_DURATION;
 	float transmitCounter;
+	float timeStart;
+	public float SCALE_MAX;
+	public float SCALE_DURATION;
 
 	// Use this for initialization
 	void Start () {
 		transmitCounter = 0;
+		timeStart = Time.time;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		transmitCounter -= Time.deltaTime;
-		if (transmitCounter <= 0) {
-			gameObject.SetActive (false);
+		// Interp the scale to max
+		float value = (Time.time - timeStart) / SCALE_DURATION;
+		if (value >= 1.0f) {
+			Destroy (gameObject);
+			return;
 		}
-	}
-
-public void Transmit() {
-		Debug.Log ("transmitting");
-		gameObject.SetActive (true);
+		gameObject.transform.localScale = Vector3.Slerp (Vector3.one, Vector3.one * SCALE_MAX, value);
 	}
 }
