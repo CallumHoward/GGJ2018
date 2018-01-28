@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1943650161707638}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 234, y: -5.4101257, z: 249}
+  m_LocalPosition: {x: 271.56445, y: -5.4101257, z: 228.98764}
   m_LocalScale: {x: 41.318104, y: 24.484777, z: 37.373573}
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,4 +76,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dino: {fileID: 1189724185137240, guid: 7a984e6975488344abca970d1bee6358, type: 2}
   terrain: {fileID: 0}
-  count: 50
+  count: 15
