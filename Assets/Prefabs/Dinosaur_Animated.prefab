@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 4186355933777142}
   - component: {fileID: 33692183090260554}
   - component: {fileID: 23079222368703430}
-  - component: {fileID: 114509149134744788}
+  - component: {fileID: 114861363883644862}
   m_Layer: 0
   m_Name: Emote
   m_TagString: Untagged
@@ -1125,7 +1125,7 @@ MonoBehaviour:
   stateCounter: 0
   goal: {fileID: 0}
   viewDistance: 40
-  emote: {fileID: 114509149134744788}
+  emote: {fileID: 114861363883644862}
   ANGULAR_SPEED: 120
   ACCELERATION: 50
   SPOTTED_DURATION: 1.5
@@ -1274,6 +1274,21 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9eec416b09a4ad64ba2591088836e8e7, type: 3}
   Big: 0
   Grass: 1
+--- !u!114 &114861363883644862
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1505448442282552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6dbd2243f909564fa94a9b0b14df275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpottedMat: {fileID: 2100000, guid: db1a271a89a0c8f4db2852aabca4afe5, type: 2}
+  CapturedMat: {fileID: 2100000, guid: 4e17b080a43ac384ba2a2b126ec559a9, type: 2}
+  Camera: {fileID: 0}
+  EMOTE_ANIM_DURATION: 1
 --- !u!137 &137675621364113732
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
