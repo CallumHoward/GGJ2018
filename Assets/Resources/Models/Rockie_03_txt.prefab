@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33801497591904802}
   - component: {fileID: 23674251907885124}
   - component: {fileID: 95157984878099692}
+  - component: {fileID: 136837000366808044}
   m_Layer: 0
   m_Name: Rockie_03_txt
   m_TagString: Untagged
@@ -98,3 +99,16 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!136 &136837000366808044
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841069311690736}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3110109
+  m_Height: 0.3527133
+  m_Direction: 1
+  m_Center: {x: -0.047456726, y: 0.14670753, z: -0.034251526}

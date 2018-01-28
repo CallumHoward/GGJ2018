@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33036238985318480}
   - component: {fileID: 23130651586115094}
   - component: {fileID: 95194672030605250}
+  - component: {fileID: 65276179330053732}
   m_Layer: 0
   m_Name: Rockie_02_txt
   m_TagString: Untagged
@@ -81,6 +82,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1166163313605942}
   m_Mesh: {fileID: 4300000, guid: 07da99a026c7bb7469d3848c113bbb97, type: 3}
+--- !u!65 &65276179330053732
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1166163313605942}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5796115, y: 1.1370512, z: 1.3627664}
+  m_Center: {x: -0.083374925, y: 0.47398236, z: -0.080709286}
 --- !u!95 &95194672030605250
 Animator:
   serializedVersion: 3
