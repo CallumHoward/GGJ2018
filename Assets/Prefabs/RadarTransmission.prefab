@@ -95,7 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TRANSMIT_DURATION: 1
   SCALE_MAX: 130
-  SCALE_DURATION: 0.5
+  SCALE_DURATION: 1.5
 --- !u!135 &135002507228397058
 SphereCollider:
   m_ObjectHideFlags: 1

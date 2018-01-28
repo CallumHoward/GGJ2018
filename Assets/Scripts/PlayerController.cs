@@ -238,6 +238,7 @@ public class PlayerController : NetworkBehaviour
 			foreach (float delay in delays) {
 				GameObject obj = Instantiate (Variables.radarTransmission, gameObject.transform.position, Quaternion.identity);
 				obj.GetComponent<RadarController> ().SetDelay (delay);
+				obj.transform.parent = transform;
 			}
 			Variables.radarCooldownCounter = Variables.RADAR_COOLDOWN;
 		}
