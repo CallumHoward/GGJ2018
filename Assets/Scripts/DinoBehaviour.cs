@@ -37,6 +37,10 @@ public class DinoBehaviour : MonoBehaviour {
     public AnimationClip jumpAnim;
     public AnimationClip runAnim;
 
+	[Header("Audio")]
+	public AudioClip[] attackSounds;
+	public AudioClip chargeSound;
+
     public PlayerRaycastCheck playerRaycastCheck;
 
     // Use this for initialization
@@ -175,6 +179,7 @@ public class DinoBehaviour : MonoBehaviour {
 		state = State.Chase;
 		agent.speed = CHASE_SPEED;
 		stateCounter = CHASE_WITHOUT_SEEING_COUNTER;
+		GetComponent<AudioSource> ().PlayOneShot (chargeSound);
 	}
 
 	void Hypnotised() {
@@ -240,6 +245,7 @@ public class DinoBehaviour : MonoBehaviour {
 			PlayerController pc = c.GetComponent<PlayerController> ();
 			if (pc != null) {
 				pc.DinoEat (this);
+				GetComponent<AudioSource> ().PlayOneShot (attackSounds [Random.Range (0, attackSounds.Length - 1)]);
 			}
 		}
     }
