@@ -157,7 +157,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1458228945720182}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 198.06506, y: 0.0000038146973, z: 267.05084}
+  m_LocalPosition: {x: 233.58002, y: 0.39999974, z: 243.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4310005579185822}
@@ -535,10 +535,17 @@ MonoBehaviour:
   state: 0
   goal: {fileID: 0}
   viewDistance: 40
+  ANGULAR_SPEED: 120
+  SPOTTED_DURATION: 0.5
+  CHASE_WITHOUT_SEEING_COUNTER: 1
   CHASE_SPEED: 12
+  SPOTTED_SPEED: 1
+  SPOTTED_ANGULAR_SPEED: 10000
   CORRALLED_SPEED: 1.56
   IDLE_SPEED: 3.05
   IDLE_WANDER_RADIUS: 5
+  HYPNOTISED_SPEED: 5
+  HYPNOSIS_DURATION: 3.5
   playerRaycastCheck: {fileID: 114438743437187638}
 --- !u!114 &114438743437187638
 MonoBehaviour:
