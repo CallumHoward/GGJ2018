@@ -15,9 +15,11 @@ public class DinoBehaviour : MonoBehaviour {
     NavMeshAgent agent;
 	public EmoteController emote;
 	public float ANGULAR_SPEED;
+	public float ACCELERATION;
 	public float SPOTTED_DURATION;
 	public float CHASE_WITHOUT_SEEING_COUNTER;
 	public float CHASE_SPEED;
+	public float CHASE_ACCELERATION;
 	public float SPOTTED_SPEED;
 	public float SPOTTED_ANGULAR_SPEED;
 	public float CORRALLED_SPEED;
@@ -50,6 +52,7 @@ public class DinoBehaviour : MonoBehaviour {
             goal = GameObject.Find("PlayerController(Clone)");
         }
         agent.angularSpeed = ANGULAR_SPEED;
+		agent.acceleration = ACCELERATION;
         switch (state) {
             case State.Idle:
                 Idle();
@@ -176,6 +179,7 @@ public class DinoBehaviour : MonoBehaviour {
 		{
 			anim.CrossFade(walkAnim.name, 0.1F, PlayMode.StopAll);
 		}
+		agent.acceleration = CHASE_ACCELERATION;
 		if (goal != null && (stateCounter > 0 || CanChaseGoal())) {
 			agent.destination = goal.transform.position;
 		} else {

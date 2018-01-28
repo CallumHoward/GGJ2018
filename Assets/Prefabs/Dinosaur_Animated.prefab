@@ -1127,9 +1127,11 @@ MonoBehaviour:
   viewDistance: 40
   emote: {fileID: 114509149134744788}
   ANGULAR_SPEED: 120
+  ACCELERATION: 50
   SPOTTED_DURATION: 1.5
   CHASE_WITHOUT_SEEING_COUNTER: 2.5
   CHASE_SPEED: 12
+  CHASE_ACCELERATION: 10
   SPOTTED_SPEED: 0.5
   SPOTTED_ANGULAR_SPEED: 100000
   CORRALLED_SPEED: 3
@@ -1253,6 +1255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db525a34ede8b8048a867dcd6238c390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   footSteps:
   - {fileID: 8300000, guid: 7f5cce4a52bb90547830865958fd5fe3, type: 3}
   - {fileID: 8300000, guid: e17053dcc5c8895429b03024bc5b749b, type: 3}
@@ -1272,6 +1275,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9eec416b09a4ad64ba2591088836e8e7, type: 3}
   Big: 0
   Grass: 1
+=======
+  SpottedMat: {fileID: 2100000, guid: db1a271a89a0c8f4db2852aabca4afe5, type: 2}
+  CapturedMat: {fileID: 2100000, guid: 4e17b080a43ac384ba2a2b126ec559a9, type: 2}
+  Camera: {fileID: 0}
+  EMOTE_ANIM_DURATION: 1
+>>>>>>> 306a92c5e3121ef1a60da1089e5ae1f819f8f1da
 --- !u!137 &137675621364113732
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
