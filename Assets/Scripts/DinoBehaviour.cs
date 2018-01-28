@@ -15,9 +15,11 @@ public class DinoBehaviour : MonoBehaviour {
     NavMeshAgent agent;
 	public EmoteController emote;
 	public float ANGULAR_SPEED;
+	public float ACCELERATION;
 	public float SPOTTED_DURATION;
 	public float CHASE_WITHOUT_SEEING_COUNTER;
 	public float CHASE_SPEED;
+	public float CHASE_ACCELERATION;
 	public float SPOTTED_SPEED;
 	public float SPOTTED_ANGULAR_SPEED;
 	public float CORRALLED_SPEED;
@@ -33,6 +35,7 @@ public class DinoBehaviour : MonoBehaviour {
     public AnimationClip attackAnim;
     public AnimationClip spottedAnim;
     public AnimationClip jumpAnim;
+    public AnimationClip runAnim;
 
     public PlayerRaycastCheck playerRaycastCheck;
 
@@ -49,6 +52,7 @@ public class DinoBehaviour : MonoBehaviour {
             goal = GameObject.Find("PlayerController(Clone)");
         }
         agent.angularSpeed = ANGULAR_SPEED;
+		agent.acceleration = ACCELERATION;
         switch (state) {
             case State.Idle:
                 Idle();
@@ -66,7 +70,33 @@ public class DinoBehaviour : MonoBehaviour {
                 Corralled();
                 break;
         }
-        
+        print(agent.pathStatus);
+        if (Vector3.Distance(agent.destination, transform.position) > 0.2f && agent.speed <= 8f)
+        {
+            anim["Walk"].speed = agent.speed * 0.5f;
+            anim.clip = walkAnim;
+            if (!anim.IsPlaying(walkAnim.name))
+            {
+                anim.CrossFade(walkAnim.name, 0.2F, PlayMode.StopAll);
+            }
+        }
+        else if (Vector3.Distance(agent.destination, transform.position) > 0.2f && agent.speed > 8f)
+        {
+            anim["Run"].speed = agent.speed * 0.1875f;
+            anim.clip = runAnim;
+            if (!anim.IsPlaying(runAnim.name))
+            {
+                anim.CrossFade(runAnim.name, 0.2F, PlayMode.StopAll);
+            }
+        }
+        else
+        {
+            anim.clip = idleAnim;
+            if (!anim.IsPlaying(idleAnim.name))
+            {
+                anim.CrossFade(idleAnim.name, 0.2F, PlayMode.StopAll);
+            }
+        }
     }
 
 	void Idle() {
@@ -145,6 +175,7 @@ public class DinoBehaviour : MonoBehaviour {
 		{
 			anim.CrossFade(walkAnim.name, 0.1F, PlayMode.StopAll);
 		}
+		agent.acceleration = CHASE_ACCELERATION;
 		if (goal != null && (stateCounter > 0 || CanChaseGoal())) {
 			agent.destination = goal.transform.position;
 		} else {

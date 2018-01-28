@@ -135,7 +135,6 @@ public class PlayerController : NetworkBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        print(NetworkOverride.playerCount - 1);
         for (int i = 0; i < NetworkOverride.playerCount - 1; i++)
         {
             NetworkServer.connections[i].playerControllers[0].gameObject.GetComponent<PlayerController>()._PLAYER = (PLAYER)i;
@@ -233,12 +232,11 @@ public class PlayerController : NetworkBehaviour
             }
 
         }
-        /*
 		Variables.radarCooldownCounter -= Time.deltaTime;
 		if (Input.GetAxis ("Jump_Player_1") == 1 && Variables.radarCooldownCounter <= 0) {
-			Variables.radarTransmission.GetComponent<RadarController> ().Transmit ();
+			Instantiate (Variables.radarTransmission, gameObject.transform.position, Quaternion.identity);
 			Variables.radarCooldownCounter = Variables.RADAR_COOLDOWN;
-		}*/
+		}
     }
 
     //Collision Detection
