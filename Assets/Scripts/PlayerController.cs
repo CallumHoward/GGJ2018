@@ -234,7 +234,7 @@ public class PlayerController : NetworkBehaviour
         }
 		Variables.radarCooldownCounter -= Time.deltaTime;
 		if (Input.GetAxis ("Jump_Player_1") == 1 && Variables.radarCooldownCounter <= 0) {
-			Variables.radarTransmission.GetComponent<RadarController> ().Transmit ();
+			Instantiate (Variables.radarTransmission, gameObject.transform.position, Quaternion.identity);
 			Variables.radarCooldownCounter = Variables.RADAR_COOLDOWN;
 		}
     }
