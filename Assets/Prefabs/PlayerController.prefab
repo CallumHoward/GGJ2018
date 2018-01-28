@@ -922,64 +922,20 @@ MonoBehaviour:
     colliderHeight: 0
     jumpAllowed: 1
     grounded: 1
-<<<<<<< HEAD
 --- !u!114 &114834582044401778
-=======
---- !u!114 &114871155826761932
->>>>>>> 3288d4ca6f2194017571c4858201400effd49833
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1568727472050160}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed4bdf0a5592a7f43987157460d8c420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TRANSMIT_DURATION: 1
---- !u!135 &135754574843376804
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1568727472050160}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
-=======
-  m_GameObject: {fileID: 1186448824185706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 179
-    i1: 236
-    i2: 248
-    i3: 77
-    i4: 185
-    i5: 9
-    i6: 76
-    i7: 228
-    i8: 235
-    i9: 47
-    i10: 153
-    i11: 243
-    i12: 108
-    i13: 152
-    i14: 22
-    i15: 42
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
->>>>>>> 3288d4ca6f2194017571c4858201400effd49833
+  SCALE_MAX: 0
+  SCALE_DURATION: 0
 --- !u!136 &136759033022708360
 CapsuleCollider:
   m_ObjectHideFlags: 1
