@@ -10,6 +10,7 @@ public class DinoBehaviour : MonoBehaviour {
 	public float stateCounter;
 	public float growlCounter;
 	GameObject pen;
+    public GameObject[] goals;
     public GameObject goal;
     [Range(0f, 100f)]
     public float viewDistance = 40f;
@@ -45,18 +46,28 @@ public class DinoBehaviour : MonoBehaviour {
 
     public PlayerRaycastCheck playerRaycastCheck;
 
+    public float shortest = Mathf.Infinity;
+
     // Use this for initialization
     void Start () {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animation>();
 		stateCounter = 0;
     }
-
+    private void LateUpdate()
+    {
+        goals = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject go in goals)
+        {
+            if (Vector3.Distance(go.transform.position, transform.position) < shortest)
+            {
+                goal = go;
+            }
+        }
+    }
     // Update is called once per frame
     void Update() {
-        if (goal == null) {
-            goal = GameObject.Find("PlayerController(Clone)");
-        }
+        
         agent.angularSpeed = ANGULAR_SPEED;
 		agent.acceleration = ACCELERATION;
         switch (state) {
