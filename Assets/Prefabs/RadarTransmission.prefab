@@ -23,9 +23,9 @@ GameObject:
   - component: {fileID: 135002507228397058}
   - component: {fileID: 23774282765268000}
   - component: {fileID: 114862052323305404}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RadarTransmission
-  m_TagString: Untagged
+  m_TagString: Radar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1093838663862476}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 213.505, y: -1.6799998, z: 257.712}
+  m_LocalPosition: {x: 254.43098, y: -4.7814164, z: 269.18625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -94,8 +94,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TRANSMIT_DURATION: 1
-  SCALE_MAX: 0
-  SCALE_DURATION: 0
+  SCALE_MAX: 130
+  SCALE_DURATION: 0.5
 --- !u!135 &135002507228397058
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -103,7 +103,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1093838663862476}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
