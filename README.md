@@ -1,10 +1,15 @@
-#DinoLand
+# DinoLand
 
-##Global Game Jam 2018
+## Global Game Jam 2018
 
 Embark on a prehistoric adventure, herding unruly dinosaurs back into their paddocks - but beware! In this multiplayer caper, betrayal is everywhere! Will you get gobbled by one of your hungry hungry livestock, or will one of your own sabotage the venture and let the dinos out of their containment! As a dinosaur rancher, lead your herd of raptors into the central paddock without getting gobbled - luckily, you have a bamboozling transmitter to lull the dinosaurs into a haze, so you can lead them home safely.
 
-# Template Unity Project
+## Links
+Itch.io: https://gtgalaxi.itch.io/dinoland
+
+Global Game Jam: https://globalgamejam.org/2018/games/dinoland
+
+
 
 ## Git and Git LFS
 
